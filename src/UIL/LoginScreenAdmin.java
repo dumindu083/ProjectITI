@@ -283,7 +283,7 @@ public class LoginScreenAdmin extends javax.swing.JFrame {
             admin.setUsername(txtUsername.getText());
             admin.setPassword(String.valueOf(txtPassword.getPassword()));
             if (admin.loginITI(admin, "admin")) { //define the table name as admin
-                uie.showWindow(this, new WelcomeITI());
+                uie.showWindow(this, new WelcomeITIAdmin());
             } else {
                 uie.showError(this, "Invalid login! Please re-check your credentials");
                 clearValues();
