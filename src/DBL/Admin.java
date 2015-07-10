@@ -7,10 +7,7 @@ package DBL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,7 +157,6 @@ public class Admin {
                 +"', '"+admin.getUsername()
                 +"', '"+admin.getPassword()
                 +"');";
-//        Strin SQL2 = "sihdi"+stu
         
         try {
             dBConnection.insertValues(SQL);
@@ -187,7 +183,6 @@ public class Admin {
                 +"', '"+student.getNumberOfLessonsCovered()
                 +"', '"+student.getDateRegistred()
                 +"');";
-//        Strin SQL2 = "sihdi"+stu
         
         try {
             dBConnection.insertValues(SQL);

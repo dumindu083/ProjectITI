@@ -11,12 +11,12 @@ import javax.swing.UIManager;
  *
  * @author hp
  */
-public class WelcomeITI extends javax.swing.JFrame {
+public class WelcomeITIAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form WelcomeScreen
      */
-    public WelcomeITI() {
+    public WelcomeITIAdmin() {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
     }
@@ -37,9 +37,11 @@ public class WelcomeITI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -82,6 +84,7 @@ public class WelcomeITI extends javax.swing.JFrame {
 
         jMenuItem3.setText("My Account");
         jMenu3.add(jMenuItem3);
+        jMenu3.add(jSeparator2);
 
         jMenu4.setText("Lessons");
 
@@ -92,6 +95,9 @@ public class WelcomeITI extends javax.swing.JFrame {
         jMenu4.add(jMenuItem5);
 
         jMenu3.add(jMenu4);
+
+        jMenuItem6.setText("Students");
+        jMenu3.add(jMenuItem6);
 
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
@@ -164,8 +170,12 @@ public class WelcomeITI extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WelcomeITI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(WelcomeITIAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -176,7 +186,7 @@ public class WelcomeITI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WelcomeITI().setVisible(true);
+                new WelcomeITIAdmin().setVisible(true);
             }
         });
     }
@@ -194,7 +204,9 @@ public class WelcomeITI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

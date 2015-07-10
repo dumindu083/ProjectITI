@@ -19,6 +19,8 @@
                     <Property name="text" type="java.lang.String" value="My Account"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+                </MenuItem>
                 <Menu class="javax.swing.JMenu" name="jMenu4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Lessons"/>
@@ -36,6 +38,11 @@
                     </MenuItem>
                   </SubComponents>
                 </Menu>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Students"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
