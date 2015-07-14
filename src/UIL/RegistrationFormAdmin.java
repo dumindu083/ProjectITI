@@ -33,6 +33,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         txtConPassword.setText("");
         txtEmail.setText("");
         GenderButtonGroup.clearSelection();
+        txtFirstName.grabFocus();
     }
 
     /**
@@ -253,7 +254,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
 
-        new UIEnhancements().showWindow(this, new LoginScreen());
+        new UIEnhancements().showWindow(this, new LoginScreenAdmin());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -298,7 +299,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
 //        } else if (uie.showConfirm(this, "Are you sure to submit this information?") == 0){
         } else if (uie.showConfirm(this, "Are you sure to submit this information?") == 0) {
 
-                //set admin attribs
+            //set admin attribs
             admin.setFirstName(txtFirstName.getText());
             admin.setLastName(txtLastName.getText());
             if (btnMale.isSelected()) {
@@ -310,9 +311,9 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             admin.setUsername(txtUsername.getText());
             admin.setPassword(String.valueOf(txtConPassword.getPassword()));
             admin.setEmail(txtEmail.getText());
-            
+
             admin.registerITI(admin, this);
-            
+
             uie.showWindow(this, new LoginScreenAdmin());
         }
 

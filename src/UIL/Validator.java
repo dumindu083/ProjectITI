@@ -15,7 +15,13 @@ import javax.swing.JComboBox;
  */
 public class Validator {
 
-    public boolean validateEmail(String email) {
+    /**
+     *
+     * @param email
+     * Validates user entered email address 
+     * @return 
+     */
+    protected boolean validateEmail(String email) {
 
         boolean status = false;
 
@@ -34,11 +40,11 @@ public class Validator {
         return status;
     }
     
-    public boolean isEmpty(String firstName){
+    public boolean isEmpty(String text){
         
         boolean status;
         
-        if (firstName.isEmpty()) {
+        if (text.isEmpty()) {
             status = true;
         } else {
             status = false;

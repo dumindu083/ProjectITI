@@ -62,7 +62,7 @@ public class LoginScreenAdmin extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Intelligent Tabla Instructor");
+        setTitle("ITI - Admin Login");
         setResizable(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/tablaIcon.png"))); // NOI18N

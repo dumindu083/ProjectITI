@@ -35,6 +35,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         txtEmail.setText("");
         cmbExperience.setSelectedIndex(-1);
         GenderButtonGroup.clearSelection();
+        txtFirstName.grabFocus();
     }
 
     /**
