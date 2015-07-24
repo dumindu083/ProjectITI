@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.Student;
 import javax.swing.UIManager;
 
 /**
@@ -13,12 +14,26 @@ import javax.swing.UIManager;
  */
 public class WelcomeITI extends javax.swing.JFrame {
 
+    private Student student;
+
     /**
      * Creates new form WelcomeScreen
      */
     public WelcomeITI() {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
+    }
+
+    WelcomeITI(Student student) {
+        this();
+        this.student = student;
+        this.setTitle("Hello, " + student.getFirstName() + "!");
+        lblRegular.setText(String.valueOf(student.getNumberOfLessonsCovered()));
+        lblBasic.setText(student.getBasicLessonStat());
+        lblCurrentLesson.setText(String.valueOf(student.getCurrentLesson()));
+        
+        
+
     }
 
     /**
@@ -32,16 +47,30 @@ public class WelcomeITI extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblBasic = new javax.swing.JLabel();
+        lblRegular = new javax.swing.JLabel();
+        btnRefer = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblCurrentLesson = new javax.swing.JLabel();
+        lblOverallMark = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        itemMyAcc = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemlogout = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        itemBasic = new javax.swing.JMenuItem();
+        itemRegular = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -49,9 +78,139 @@ public class WelcomeITI extends javax.swing.JFrame {
         setTitle("Intelligent Tabla Instructor");
         setResizable(false);
 
+        jLabel2.setBackground(java.awt.Color.white);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/tablaIcon.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lessons Completed", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Basic:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Regular:");
+
+        lblBasic.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblBasic.setText("Done!");
+
+        lblRegular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblRegular.setText("12");
+
+        btnRefer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRefer.setText("Refer");
+        btnRefer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReferActionPerformed(evt);
+            }
+        });
+
+        btnNext.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnNext.setText("Next>");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBasic, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegular, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(btnRefer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblBasic)
+                    .addComponent(btnRefer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblRegular)
+                    .addComponent(btnNext))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Current Lesson:");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("Overall:");
+
+        lblCurrentLesson.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCurrentLesson.setText("11");
+
+        lblOverallMark.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblOverallMark.setText("58%");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCurrentLesson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblOverallMark, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblCurrentLesson))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblOverallMark))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 22)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Welcome to ITI");
 
@@ -59,10 +218,14 @@ public class WelcomeITI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -71,43 +234,68 @@ public class WelcomeITI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
                 .addComponent(jLabel3)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenu1.setText("ITI");
 
         jMenu3.setText("Go to");
 
-        jMenuItem3.setText("My Account");
-        jMenu3.add(jMenuItem3);
-
-        jMenu4.setText("Lessons");
-
-        jMenuItem4.setText("Basic");
-        jMenu4.add(jMenuItem4);
-
-        jMenuItem5.setText("Regular");
-        jMenu4.add(jMenuItem5);
-
-        jMenu3.add(jMenu4);
+        itemMyAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/account.png"))); // NOI18N
+        itemMyAcc.setText("My Account");
+        itemMyAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMyAccActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemMyAcc);
 
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
 
-        jMenuItem1.setText("Log out");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemlogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
+        itemlogout.setText("Log out");
+        itemlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemlogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemlogout);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu5.setText("View");
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/lesson.png"))); // NOI18N
+        jMenu4.setText("Lessons");
+
+        itemBasic.setText("Basic");
+        itemBasic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBasicActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemBasic);
+
+        itemRegular.setText("Regular");
+        itemRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegularActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemRegular);
+
+        jMenu5.add(jMenu4);
+
+        jMenuBar1.add(jMenu5);
+
         jMenu2.setText("Help");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/info.png"))); // NOI18N
         jMenuItem2.setText("About ITI");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,16 +329,50 @@ public class WelcomeITI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemlogoutActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+//        System.exit(0);
+        new UIEnhancements().showWindow(this, new LoginScreen());
+    }//GEN-LAST:event_itemlogoutActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
-        
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void itemMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMyAccActionPerformed
+        // TODO add your handling code here:
+        StudentAccount studentAccount = new StudentAccount(this.student);
+        new UIEnhancements().showWindow(this, studentAccount);
+
+    }//GEN-LAST:event_itemMyAccActionPerformed
+
+    private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
+        // TODO add your handling code here:
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student);
+        new UIEnhancements().showWindow(basicLessonChooser);
+    }//GEN-LAST:event_itemBasicActionPerformed
+
+    private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
+        // TODO add your handling code here:
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student);
+        new UIEnhancements().showWindow(regularLessonPlan);
+    }//GEN-LAST:event_itemRegularActionPerformed
+
+    private void btnReferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReferActionPerformed
+        // TODO add your handling code here:
+
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student);
+        new UIEnhancements().showWindow(basicLessonChooser);
+    }//GEN-LAST:event_btnReferActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        // TODO add your handling code here:
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student);
+        new UIEnhancements().showWindow(regularLessonPlan);
+
+    }//GEN-LAST:event_btnNextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,7 +392,7 @@ public class WelcomeITI extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -182,19 +404,33 @@ public class WelcomeITI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnRefer;
+    private javax.swing.JMenuItem itemBasic;
+    private javax.swing.JMenuItem itemMyAcc;
+    private javax.swing.JMenuItem itemRegular;
+    private javax.swing.JMenuItem itemlogout;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JLabel lblBasic;
+    private javax.swing.JLabel lblCurrentLesson;
+    private javax.swing.JLabel lblOverallMark;
+    private javax.swing.JLabel lblRegular;
     // End of variables declaration//GEN-END:variables
 }

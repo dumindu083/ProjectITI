@@ -6,12 +6,10 @@
 package UIL;
 
 import DBL.Admin;
-import DBL.DBConnection;
-import DBL.Student;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-/**
+/**I
  *
  * @author hp
  */
@@ -62,6 +60,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnMale = new javax.swing.JRadioButton();
         btnFemale = new javax.swing.JRadioButton();
+        lblPWStat = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -72,28 +71,57 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ITI Registration");
+        setTitle("ITI - Admin Registration");
         setResizable(false);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("First Name");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Last Name");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Username");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Password");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Confirm Password");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("E-mail");
 
+        txtFirstName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyTyped(evt);
+            }
+        });
+
+        txtConPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Gender");
 
         GenderButtonGroup.add(btnMale);
+        btnMale.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnMale.setText("Male");
 
         GenderButtonGroup.add(btnFemale);
+        btnFemale.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnFemale.setText("Female");
+
+        lblPWStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPWStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,29 +132,38 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))
-                        .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(txtConPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8))
-                        .addGap(78, 78, 78)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(145, 145, 145)
+                                .addComponent(btnFemale))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnMale)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnFemale))
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                            .addComponent(txtLastName))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6))
+                                .addGap(46, 46, 46))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMale)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                .addComponent(txtConPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,7 +189,8 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -161,9 +199,10 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
+        btnOK.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +210,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +229,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/close.png"))); // NOI18N
         jMenuItem1.setText("Exit");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +242,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/info.png"))); // NOI18N
         jMenuItem2.setText("About ITI");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,9 +307,6 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
 
-//        DBConnection dBConnection = new DBConnection();
-//
-//        System.out.println(dBConnection.isConnected());
         UIEnhancements uie = new UIEnhancements();
         Validator validator = new Validator();
         Admin admin = new Admin();
@@ -284,10 +323,11 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         } else if (validator.isEmpty(txtUsername.getText())) {
             uie.showWarning(this, "Please enter your username");
             txtUsername.grabFocus();
-        } else if (validator.isEmpty(String.valueOf(txtPassword.getPassword()))) {
-            uie.showWarning(this, "Please enter your password");
+        } else if (validator.isEmpty(String.valueOf(txtPassword.getPassword())) || !validator.hasEnoughChar(String.valueOf(txtPassword.getPassword()), 6) || validator.containsApo(txtPassword.getText())) {
+            uie.showWarning(this, "Please enter your password with at least 6 characters\n(Apostrophe is not allowed here)");
             txtPassword.grabFocus();
-        } else if (validator.isEmpty(String.valueOf(txtConPassword.getPassword())) || !validator.isMatching(txtPassword.getPassword(), txtConPassword.getPassword())) {
+        } else if (validator.isEmpty(String.valueOf(txtConPassword.getPassword())) || !validator.isMatching(txtPassword.getPassword(), txtConPassword.getPassword())
+                || validator.containsApo(txtPassword.getText())) {
             uie.showWarning(this, "Paswords unmatched! Please re-enter the password");
             txtConPassword.grabFocus();
             txtConPassword.selectAll();
@@ -296,7 +336,6 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             txtEmail.grabFocus();
             txtEmail.setSelectedTextColor(Color.red);
             txtEmail.selectAll();
-//        } else if (uie.showConfirm(this, "Are you sure to submit this information?") == 0){
         } else if (uie.showConfirm(this, "Are you sure to submit this information?") == 0) {
 
             //set admin attribs
@@ -311,10 +350,12 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             admin.setUsername(txtUsername.getText());
             admin.setPassword(String.valueOf(txtConPassword.getPassword()));
             admin.setEmail(txtEmail.getText());
-
+            
+            
             admin.registerITI(admin, this);
-
+            
             uie.showWindow(this, new LoginScreenAdmin());
+
         }
 
 
@@ -322,9 +363,22 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-
         clearValues();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+        // TODO add your handling code here:
+        if (txtPassword.getText().length() < 6) {
+            lblPWStat.setText("Poor");
+            lblPWStat.setForeground(Color.RED);
+        }
+        else if (txtPassword.getText().length() >= 6){
+            lblPWStat.setText("Good");
+            lblPWStat.setForeground(Color.GREEN);
+        }
+        else if(txtPassword.getText().length() == 0)
+            lblPWStat.setText("");
+    }//GEN-LAST:event_txtPasswordKeyTyped
 
     /**
      * @param args the command line arguments
@@ -375,6 +429,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblPWStat;
     private javax.swing.JPasswordField txtConPassword;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;

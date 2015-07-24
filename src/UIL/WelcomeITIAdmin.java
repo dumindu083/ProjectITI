@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.Admin;
 import javax.swing.UIManager;
 
 /**
@@ -13,12 +14,27 @@ import javax.swing.UIManager;
  */
 public class WelcomeITIAdmin extends javax.swing.JFrame {
 
+    private Admin admin;
+    
+    
     /**
      * Creates new form WelcomeScreen
      */
     public WelcomeITIAdmin() {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
+        
+    }
+
+    WelcomeITIAdmin(Admin admin) {
+        
+        this();
+        this.admin = admin;
+        
+    }
+    
+    public void close(){
+        this.dispose();
     }
 
     /**
@@ -33,94 +49,206 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnMyAcc = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        btnStudentMgt = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        itemMyAcc = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemlogout = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        itemBasic = new javax.swing.JMenuItem();
+        itemRegular = new javax.swing.JMenuItem();
+        itemStudents = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ITI Admin Welcome Screen");
+        setTitle("Welcome Back!");
         setResizable(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/tablaIcon.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 22)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Welcome to ITI");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "I need to...", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+
+        btnMyAcc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnMyAcc.setText("My Account");
+        btnMyAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyAccActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("Edit a Basic Lesson");
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setText("Edit a Regular Lesson");
+
+        btnStudentMgt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnStudentMgt.setText("Student Management");
+        btnStudentMgt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStudentMgtActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLogout.setText("Log out");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(btnStudentMgt)
+                    .addComponent(btnLogout))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLogout, btnMyAcc, btnStudentMgt, jButton2, jButton3});
+
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnMyAcc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnStudentMgt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLogout)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(19, 19, 19)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(19, 19, 19)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(203, 203, 203)
+                    .addComponent(jLabel3)
+                    .addContainerGap(203, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("ITI");
 
         jMenu3.setText("Go to");
 
-        jMenuItem3.setText("My Account");
-        jMenu3.add(jMenuItem3);
+        itemMyAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/account.png"))); // NOI18N
+        itemMyAcc.setText("My Account");
+        itemMyAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemMyAccActionPerformed(evt);
+            }
+        });
+        jMenu3.add(itemMyAcc);
         jMenu3.add(jSeparator2);
-
-        jMenu4.setText("Lessons");
-
-        jMenuItem4.setText("Basic");
-        jMenu4.add(jMenuItem4);
-
-        jMenuItem5.setText("Regular");
-        jMenu4.add(jMenuItem5);
-
-        jMenu3.add(jMenu4);
-
-        jMenuItem6.setText("Students");
-        jMenu3.add(jMenuItem6);
 
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
 
-        jMenuItem1.setText("Log out");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemlogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
+        itemlogout.setText("Log out");
+        itemlogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemlogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemlogout);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Help");
+        jMenu5.setText("View");
 
-        jMenuItem2.setText("About ITI");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/lesson.png"))); // NOI18N
+        jMenu4.setText("Lessons");
+
+        itemBasic.setText("Basic");
+        itemBasic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemBasicActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu4.add(itemBasic);
+
+        itemRegular.setText("Regular");
+        itemRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRegularActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemRegular);
+
+        jMenu5.add(jMenu4);
+
+        itemStudents.setText("Students");
+        itemStudents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemStudentsActionPerformed(evt);
+            }
+        });
+        jMenu5.add(itemStudents);
+
+        jMenuBar1.add(jMenu5);
+
+        jMenu2.setText("Help");
+
+        itemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/info.png"))); // NOI18N
+        itemAbout.setText("About ITI");
+        itemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAboutActionPerformed(evt);
+            }
+        });
+        jMenu2.add(itemAbout);
 
         jMenuBar1.add(jMenu2);
 
@@ -147,16 +275,68 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemlogoutActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+//        System.exit(0);
+        new UIEnhancements().showWindow(this, new LoginScreenAdmin());
+    }//GEN-LAST:event_itemlogoutActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAboutActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
         
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemAboutActionPerformed
+
+    private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
+        // TODO add your handling code here:
+        new UIEnhancements().showWindow(this, new BasicLessonChooser());
+    }//GEN-LAST:event_itemBasicActionPerformed
+
+    private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
+        // TODO add your handling code here:
+        new UIEnhancements().showWindow(this, new BasicLessonChooser());
+    }//GEN-LAST:event_itemRegularActionPerformed
+
+    private void itemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemStudentsActionPerformed
+        // TODO add your handling code here:
+        StudentManagement sm = new StudentManagement();
+        new UIEnhancements().showWindow(sm);
+    }//GEN-LAST:event_itemStudentsActionPerformed
+
+    private void itemMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMyAccActionPerformed
+        // TODO add your handling code here:
+        AdminAccount adminAccount = new AdminAccount(this.admin);
+        new UIEnhancements().showWindow(this,adminAccount);
+//        if (adminAccount.isShowing()) {
+//            itemMyAcc.setEnabled(false);
+//        }
+//        else{
+//            itemMyAcc.setEnabled(true);
+//        }
+        
+        
+        
+    }//GEN-LAST:event_itemMyAccActionPerformed
+
+    private void btnMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccActionPerformed
+        // TODO add your handling code here:
+        AdminAccount adminAccount = new AdminAccount(this.admin);
+        new UIEnhancements().showWindow(this,adminAccount);
+    }//GEN-LAST:event_btnMyAccActionPerformed
+
+    private void btnStudentMgtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentMgtActionPerformed
+        // TODO add your handling code here:
+        StudentManagement sm = new StudentManagement();
+        new UIEnhancements().showWindow(sm);
+        
+       
+        
+    }//GEN-LAST:event_btnStudentMgtActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        new UIEnhancements().showWindow(this, new LoginScreenAdmin());
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,20 +372,27 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnMyAcc;
+    private javax.swing.JButton btnStudentMgt;
+    private javax.swing.JMenuItem itemAbout;
+    private javax.swing.JMenuItem itemBasic;
+    private javax.swing.JMenuItem itemMyAcc;
+    private javax.swing.JMenuItem itemRegular;
+    private javax.swing.JMenuItem itemStudents;
+    private javax.swing.JMenuItem itemlogout;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
