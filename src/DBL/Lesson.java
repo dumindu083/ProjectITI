@@ -72,14 +72,6 @@ public class Lesson {
         this.playingFingers = playingFingers;
     }
 
-    public String getImagePath() {
-        return ImagePath;
-    }
-
-    public void setImagePath(String ImagePath) {
-        this.ImagePath = ImagePath;
-    }
-
     public String getVideoPath() {
         return videoPath;
     }
@@ -124,7 +116,5 @@ public class Lesson {
 //            Logger.getLogger(Lesson.class.getName()).log(Level.SEVERE, null, ex);
             new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n" + ex.getMessage());
         }
-
     }
-
 }
