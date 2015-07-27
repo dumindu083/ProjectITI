@@ -7,9 +7,8 @@ package UIL;
 
 import DBL.Admin;
 import DBL.Student;
-import com.sun.glass.events.WindowEvent;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 /**
@@ -19,6 +18,7 @@ import javax.swing.UIManager;
 public class StudentManagement extends javax.swing.JFrame {
 
     private Admin admin;
+    private WelcomeITIAdmin welcomeITIAdmin;
 
     /**
      * Creates new form WelcomeScreen
@@ -27,20 +27,14 @@ public class StudentManagement extends javax.swing.JFrame {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
     }
-    
-    public void close(){
-        WindowEvent event = new WindowEvent();
-        
-    }
 
-    StudentManagement(Admin admin) {
+    StudentManagement(Admin admin, JFrame welcomeITIAdmin) {
 
         this();
 
-        this.admin.setUsername(admin.getUsername());
+        this.admin = admin;
+        this.welcomeITIAdmin = (WelcomeITIAdmin) welcomeITIAdmin;
 
-       this.admin = admin;
-        
     }
 
     private void clearValues() {
@@ -107,7 +101,7 @@ public class StudentManagement extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         itemRetWelcome = new javax.swing.JMenuItem();
-        itemExit = new javax.swing.JMenuItem();
+        itemLogout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -415,15 +409,15 @@ public class StudentManagement extends javax.swing.JFrame {
         });
         jMenu1.add(itemRetWelcome);
 
-        itemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
-        itemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
-        itemExit.setText("Log out");
-        itemExit.addActionListener(new java.awt.event.ActionListener() {
+        itemLogout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+        itemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
+        itemLogout.setText("Log out");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemExitActionPerformed(evt);
+                itemLogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(itemExit);
+        jMenu1.add(itemLogout);
 
         jMenuBar1.add(jMenu1);
 
@@ -463,12 +457,12 @@ public class StudentManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemExitActionPerformed
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
         
-        WelcomeITIAdmin witi = new WelcomeITIAdmin();
+        new DBL.Admin().logoutITI(this, this.welcomeITIAdmin, new LoginScreenAdmin());
 
-    }//GEN-LAST:event_itemExitActionPerformed
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     private void itemRetWelcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRetWelcomeActionPerformed
         // TODO add your handling code here:
@@ -554,12 +548,12 @@ public class StudentManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(evt);
         new WelcomeITIAdmin(this.admin).dispose();
-        
+
     }//GEN-LAST:event_formWindowClosing
 
     private void txtStudentIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtStudentIDFocusLost
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtStudentIDFocusLost
 
     /**
@@ -609,7 +603,7 @@ public class StudentManagement extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JMenuItem itemExit;
+    private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemRetWelcome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

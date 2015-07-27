@@ -62,7 +62,7 @@ public class DBConnection {
     public ResultSet getValues(String query) throws SQLException {
 
         Connection connection = getConnection();
-        Statement statement = connection.createStatement();
+        Statement statement = connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery(query);
 
         resultSet.next();
@@ -70,8 +70,8 @@ public class DBConnection {
         return resultSet;
 
     }
-    
-     public void insertValues(String query) throws SQLException {
+
+    public void insertValues(String query) throws SQLException {
 
         Connection connection = getConnection();
         Statement statement = connection.createStatement();

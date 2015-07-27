@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @author hp
  */
 public class Lesson {
-    
+
     String lessonNo;
     String title;
     String Description;
@@ -21,6 +21,7 @@ public class Lesson {
     String PlayAreas;
     String playingFingers;
     String ImagePath;
+    byte[] ImageData;
     String videoPath;
 
     public String getLessonNo() {
@@ -86,42 +87,44 @@ public class Lesson {
     public void setVideoPath(String videoPath) {
         this.videoPath = videoPath;
     }
+
+    public byte[] getImageData() {
+        return ImageData;
+    }
+
+    public void setImageData(byte[] ImageData) {
+        this.ImageData = ImageData;
+    }
     
     
-    public void getLessonData(Lesson lesson, String LessonID){
-        
+
+    public void getLessonData(Lesson lesson, String LessonID) {
+
         try {
             DBConnection dBConnection = DBConnection.getInstance();
-            
+
             String SQL = "SELECT * FROM regularlesson WHERE Lesson_ID = " + lesson.getLessonNo() + ";";
-            
+
             ResultSet resultSet = dBConnection.getValues(SQL);
-            
-//            PreparedStatement ps = (PreparedStatement) dBConnection.getValues(SQL);
-            
-            
+
             if (resultSet.first()) {
-                
+
                 lesson.setLessonNo(resultSet.getString(1));
                 lesson.setTitle(resultSet.getString(2));
                 lesson.setDescription(resultSet.getString(3));
                 lesson.setAksharas(resultSet.getString(4));
                 lesson.setPlayingFingers(resultSet.getString(6));
                 lesson.setPlayAreas(resultSet.getString(5));
-                lesson.setImagePath(String.valueOf(resultSet.getBlob(7)));
-                
+                lesson.setImageData(resultSet.getBytes(7));
+
             } else {
                 new UIL.UIEnhancements().showError(null, "NO DATA");
             }
         } catch (SQLException ex) {
 //            Logger.getLogger(Lesson.class.getName()).log(Level.SEVERE, null, ex);
-            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n"+ex.getMessage());
+            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n" + ex.getMessage());
         }
-        
-        
-        
+
     }
-    
-    
-    
+
 }

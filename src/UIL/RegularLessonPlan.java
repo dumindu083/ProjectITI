@@ -7,6 +7,7 @@ package UIL;
 
 import DBL.Lesson;
 import DBL.Student;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 /**
@@ -16,8 +17,7 @@ import javax.swing.UIManager;
 public class RegularLessonPlan extends javax.swing.JFrame {
 
     private Student student;
-
-    public String NUM;
+    private WelcomeITI welcomeITI;
 
     /**
      * CreatesF new form WelcomeScreen
@@ -28,7 +28,7 @@ public class RegularLessonPlan extends javax.swing.JFrame {
 
     }
 
-    RegularLessonPlan(Student student) {
+    RegularLessonPlan(Student student, JFrame welcomeITI) {
         this();
         int currentLesson = student.getCurrentLesson();
 
@@ -48,8 +48,6 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         jButton14.setEnabled(false);
         jButton15.setEnabled(false);
 
-        String num = jButton1.getText();
-        NUM = num;
 
         if (currentLesson == 1) {
             jButton1.setEnabled(true);
@@ -192,6 +190,7 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         }
 
         this.student = student;
+        this.welcomeITI = (WelcomeITI) welcomeITI;
 
     }
 
@@ -229,12 +228,11 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        itemMyAcc = new javax.swing.JMenuItem();
         itemWelcome = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         itemBasic = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        itmExit = new javax.swing.JMenuItem();
+        itemLogout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -481,15 +479,6 @@ public class RegularLessonPlan extends javax.swing.JFrame {
 
         jMenu3.setText("Go to");
 
-        itemMyAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/account.png"))); // NOI18N
-        itemMyAcc.setText("My Account");
-        itemMyAcc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemMyAccActionPerformed(evt);
-            }
-        });
-        jMenu3.add(itemMyAcc);
-
         itemWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/welcome.png"))); // NOI18N
         itemWelcome.setText("Welcome");
         itemWelcome.addActionListener(new java.awt.event.ActionListener() {
@@ -515,14 +504,14 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
 
-        itmExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
-        itmExit.setText("Log out");
-        itmExit.addActionListener(new java.awt.event.ActionListener() {
+        itemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
+        itemLogout.setText("Log out");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itmExitActionPerformed(evt);
+                itemLogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(itmExit);
+        jMenu1.add(itemLogout);
 
         jMenuBar1.add(jMenu1);
 
@@ -562,26 +551,18 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itmExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExitActionPerformed
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
-//        System.exit(0);
-        if (new WelcomeITI(this.student).isDisplayable()) {
-            new UIEnhancements().showWindow(this, new LoginScreen());
-        }
 
-    }//GEN-LAST:event_itmExitActionPerformed
+        new DBL.Admin().logoutITI(this, this.welcomeITI, new LoginScreen());
+
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void itemMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMyAccActionPerformed
-        // TODO add your handling code here:
-        StudentAccount studentAccount = new StudentAccount(this.student);
-        new UIEnhancements().showWindow(this, studentAccount);
-    }//GEN-LAST:event_itemMyAccActionPerformed
 
     private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
         // TODO add your handling code here:
@@ -760,9 +741,8 @@ public class RegularLessonPlan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemBasic;
-    private javax.swing.JMenuItem itemMyAcc;
+    private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemWelcome;
-    private javax.swing.JMenuItem itmExit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;

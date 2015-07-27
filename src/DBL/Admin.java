@@ -5,6 +5,7 @@
  */
 package DBL;
 
+import UIL.UIEnhancements;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
@@ -148,19 +149,19 @@ public class Admin {
             return false;
         }
     }
-    
-    public void registerITI(Admin admin, JFrame window){
-        
+
+    public void registerITI(Admin admin, JFrame window) {
+
         DBConnection dBConnection = DBConnection.getInstance();
-        
-        String SQL = "INSERT INTO `iti`.`admin` (`FirstName`, `LastName`, `Gender`, `Email`, `Username`, `Password`) VALUES ('"+admin.getFirstName()+""
-                + "', '"+admin.getLastName()
-                +"', '"+admin.getGender()
-                +"', '"+admin.getEmail()
-                +"', '"+admin.getUsername()
-                +"', '"+admin.getPassword()
-                +"');";
-        
+
+        String SQL = "INSERT INTO `iti`.`admin` (`FirstName`, `LastName`, `Gender`, `Email`, `Username`, `Password`) VALUES ('" + admin.getFirstName() + ""
+                + "', '" + admin.getLastName()
+                + "', '" + admin.getGender()
+                + "', '" + admin.getEmail()
+                + "', '" + admin.getUsername()
+                + "', '" + admin.getPassword()
+                + "');";
+
         try {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "You've registered as an admin for ITI!");
@@ -169,26 +170,26 @@ public class Admin {
 //            ex.printStackTrace(); // Set up proper msg to the user...
             new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
         }
-        
+
     }
-    
-    public void registerITI(Student student, JFrame window){
-        
+
+    public void registerITI(Student student, JFrame window) {
+
         DBConnection dBConnection = DBConnection.getInstance();
-        
-        String SQL = "INSERT INTO `iti`.`student` (`FirstName`, `LastName`, `Gender`, `Email`, `Username`, `Password`, `PriorExperience`, `CurrentLesson`, `NoOfLessonsDone`, `DateRegistered`, `BasicLessonStat`) VALUES ('"+student.getFirstName()+""
-                + "', '"+student.getLastName()
-                +"', '"+student.getGender()
-                +"', '"+student.getEmail()
-                +"', '"+student.getUsername()
-                +"', '"+student.getPassword()
-                +"', '"+student.getPriorExpereince()
-                +"', '"+student.getCurrentLesson()
-                +"', '"+student.getNumberOfLessonsCovered()
-                +"', '"+student.getDateRegistred()
-                +"', '"+student.getBasicLessonStat()
-                +"');";
-        
+
+        String SQL = "INSERT INTO `iti`.`student` (`FirstName`, `LastName`, `Gender`, `Email`, `Username`, `Password`, `PriorExperience`, `CurrentLesson`, `NoOfLessonsDone`, `DateRegistered`, `BasicLessonStat`) VALUES ('" + student.getFirstName() + ""
+                + "', '" + student.getLastName()
+                + "', '" + student.getGender()
+                + "', '" + student.getEmail()
+                + "', '" + student.getUsername()
+                + "', '" + student.getPassword()
+                + "', '" + student.getPriorExpereince()
+                + "', '" + student.getCurrentLesson()
+                + "', '" + student.getNumberOfLessonsCovered()
+                + "', '" + student.getDateRegistred()
+                + "', '" + student.getBasicLessonStat()
+                + "');";
+
         try {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "Account created successfully...\nThank you for registering with ITI!s");
@@ -197,13 +198,13 @@ public class Admin {
 //            ex.printStackTrace();
             new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
         }
-        
+
     }
-    
-    public void updateAccount(Admin admin, JFrame window){
-        
+
+    public void updateAccount(Admin admin, JFrame window) {
+
         DBConnection dBConnection = DBConnection.getInstance();
-        
+
         String SQL = "UPDATE admin SET FirstName = '"
                 + admin.getFirstName() + "',"
                 + "LastName = '" + admin.getLastName() + "',"
@@ -211,7 +212,29 @@ public class Admin {
                 + "Email = '" + admin.getEmail() + "',"
                 + "Password = '" + admin.getPassword() + "'"
                 + "WHERE ADMIN_ID = " + admin.getUserID() + ";";
-        
+
+        try {
+            dBConnection.insertValues(SQL);
+            new UIL.UIEnhancements().showFeedback(window, "Account updated successfully!");
+        } catch (SQLException ex) {
+//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+//            ex.printStackTrace();
+            new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
+        }
+    }
+
+    public void updateAccount(Student student, JFrame window) {
+
+        DBConnection dBConnection = DBConnection.getInstance();
+
+        String SQL = "UPDATE student SET FirstName = '"
+                + student.getFirstName() + "',"
+                + "LastName = '" + student.getLastName() + "',"
+                + "Gender = '" + student.getGender() + "',"
+                + "Email = '" + student.getEmail() + "',"
+                + "Password = '" + student.getPassword() + "'"
+                + "WHERE Student_ID = " + student.getUserID() + ";";
+
         try {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "Account updated successfully!");
@@ -222,26 +245,12 @@ public class Admin {
         }
     }
     
-     public void updateAccount(Student student, JFrame window){
+    public void logoutITI(JFrame currentWindow, JFrame underlyingWindow, JFrame loginWindow){
         
-        DBConnection dBConnection = DBConnection.getInstance();
+        new UIEnhancements().showWindow(currentWindow, loginWindow);
+        underlyingWindow.dispose();
         
-        String SQL = "UPDATE student SET FirstName = '"
-                + student.getFirstName() + "',"
-                + "LastName = '" + student.getLastName() + "',"
-                + "Gender = '" + student.getGender() + "',"
-                + "Email = '" + student.getEmail() + "',"
-                + "Password = '" + student.getPassword() + "'"
-                + "WHERE Student_ID = " + student.getUserID() + ";";
-        
-        try {
-            dBConnection.insertValues(SQL);
-            new UIL.UIEnhancements().showFeedback(window, "Account updated successfully!");
-        } catch (SQLException ex) {
-//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace();
-            new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
-        }
     }
+    
 
 }

@@ -350,26 +350,26 @@ public class WelcomeITI extends javax.swing.JFrame {
 
     private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
         // TODO add your handling code here:
-        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student);
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student,this);
         new UIEnhancements().showWindow(basicLessonChooser);
     }//GEN-LAST:event_itemBasicActionPerformed
 
     private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
         // TODO add your handling code here:
-        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student);
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student,this);
         new UIEnhancements().showWindow(regularLessonPlan);
     }//GEN-LAST:event_itemRegularActionPerformed
 
     private void btnReferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReferActionPerformed
         // TODO add your handling code here:
 
-        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student);
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student,this);
         new UIEnhancements().showWindow(basicLessonChooser);
     }//GEN-LAST:event_btnReferActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student);
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student,this);
         new UIEnhancements().showWindow(regularLessonPlan);
 
     }//GEN-LAST:event_btnNextActionPerformed

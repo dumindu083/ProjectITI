@@ -11,6 +11,7 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
@@ -31,6 +32,8 @@ public class RegularLesson extends javax.swing.JDialog {
 
     /**
      * Creates new form About
+     * @param parent
+     * @param modal
      */
     public RegularLesson(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -38,12 +41,6 @@ public class RegularLesson extends javax.swing.JDialog {
         
         new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
         
-//        lblLessonNumber.setText(rlp.NUM);
-//        System.out.println(rlp.NUM);
-        System.out.println("ksjdbfkjbd");
-       
-        
-
     }
 
     /**
@@ -73,13 +70,10 @@ public class RegularLesson extends javax.swing.JDialog {
         lblAkshara.setText(lesson.getAksharas());
         lblPlayingFingers.setText(lesson.getPlayingFingers());
         lblPlayingAreas.setText(lesson.getPlayAreas());
-//        lblImage.setIcon();
+        lblImage.setIcon(new ImageIcon(lesson.getImageData()));
         
         
-        System.out.println(lesson.getTitle());
-        
-        
-        
+        System.out.println(lesson.getTitle() + " for lesson " + lblLessonNumber.getText());
         
     }
 

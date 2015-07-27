@@ -92,6 +92,11 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("Edit a Basic Lesson");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton3.setText("Edit a Regular Lesson");
@@ -299,7 +304,7 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
 
     private void itemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemStudentsActionPerformed
         // TODO add your handling code here:
-        StudentManagement sm = new StudentManagement();
+        StudentManagement sm = new StudentManagement(this.admin, this);
         new UIEnhancements().showWindow(sm);
     }//GEN-LAST:event_itemStudentsActionPerformed
 
@@ -326,17 +331,18 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
 
     private void btnStudentMgtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentMgtActionPerformed
         // TODO add your handling code here:
-        StudentManagement sm = new StudentManagement();
+        StudentManagement sm = new StudentManagement(this.admin, this);
         new UIEnhancements().showWindow(sm);
-        
-       
-        
     }//GEN-LAST:event_btnStudentMgtActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showWindow(this, new LoginScreenAdmin());
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

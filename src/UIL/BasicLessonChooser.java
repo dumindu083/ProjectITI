@@ -6,6 +6,7 @@
 package UIL;
 
 import DBL.Student;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 /**
@@ -16,6 +17,8 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private Student student;
     
+    private WelcomeITI welcomeITI;
+
     /**
      * Creates new form WelcomeScreen
      */
@@ -23,11 +26,12 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
     }
-    
-    public BasicLessonChooser(Student student){
+
+    public BasicLessonChooser(Student student, JFrame welcomeITI) {
         this();
         this.student = student;
-        
+        this.welcomeITI = (WelcomeITI) welcomeITI;
+
     }
 
     /**
@@ -62,12 +66,11 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemLogout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -243,9 +246,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -282,15 +283,6 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         jMenu3.setText("Go to");
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/account.png"))); // NOI18N
-        jMenuItem3.setText("My Account");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem3);
-
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/welcome.png"))); // NOI18N
         jMenuItem5.setText("Welcome");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -316,14 +308,14 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
-        jMenuItem1.setText("Log out");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/logout.png"))); // NOI18N
+        itemLogout.setText("Log out");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemLogoutActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemLogout);
 
         jMenuBar1.add(jMenu1);
 
@@ -363,24 +355,16 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
-        if (new WelcomeITI(this.student).isDisplayable()) {
-            new UIEnhancements().showWindow(this, new LoginScreen());
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        new DBL.Admin().logoutITI(this, this.welcomeITI, new LoginScreen());
+    }//GEN-LAST:event_itemLogoutActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-//        new UIEnhancements().showWindow(this, new StudentAccount());
-        new UIEnhancements().showWindow(new StudentAccount(this.student));
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -389,18 +373,16 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        
+
         WelcomeITI witi = new WelcomeITI(this.student);
-        
+
         if (witi.isDisplayable()) {
             this.dispose();
-        } else{
+        } else {
             new UIEnhancements().showWindow(this, witi);
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void btnPlaceHandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceHandsActionPerformed
@@ -425,23 +407,21 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         if (student.getBasicLessonStat().equals("Undone")) {
             student.setBasicLessonStat("Done");
             student.updateStudentBasics(student);
-            if(student.getCurrentLesson() == 0)
-            {
+            if (student.getCurrentLesson() == 0) {
                 student.setCurrentLesson(1);
                 student.updateStudentCurrentLesson(student);
             }
-            
-            
+
             this.dispose();
         } else {
             new UIEnhancements().showFeedback(this, "You're already done with basics");
         }
-        
+
     }//GEN-LAST:event_btnAllDoneActionPerformed
 
     private void btnPostureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostureActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnPostureActionPerformed
 
     /**
@@ -474,7 +454,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -495,6 +475,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private javax.swing.JButton btnPosture;
     private javax.swing.JButton btnTuning;
     private javax.swing.JButton btnWhatBols;
+    private javax.swing.JMenuItem itemLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -505,9 +486,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
