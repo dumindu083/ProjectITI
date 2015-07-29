@@ -588,8 +588,6 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         lesson.setLessonNo(jButton1.getText());
         lesson.getLessonData(lesson, jButton1.getText());
         new UIEnhancements().showDialog(new RegularLesson(this, true, lesson));
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -606,8 +604,6 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         lesson.setLessonNo(jButton2.getText());
         lesson.getLessonData(lesson, jButton2.getText());
         new UIEnhancements().showDialog(new RegularLesson(this, true, lesson));
-
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

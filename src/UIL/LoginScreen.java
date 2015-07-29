@@ -7,6 +7,7 @@ package UIL;
 
 import DBL.Admin;
 import DBL.Student;
+import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 
 /**
@@ -54,8 +55,8 @@ public class LoginScreen extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        itemAdminLogin = new javax.swing.JMenuItem();
+        itemExit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -77,6 +78,11 @@ public class LoginScreen extends javax.swing.JFrame {
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Password");
@@ -194,25 +200,25 @@ public class LoginScreen extends javax.swing.JFrame {
 
         jMenu3.setText("Go to");
 
-        jMenuItem3.setText("Admin Login");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        itemAdminLogin.setText("Admin Login");
+        itemAdminLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                itemAdminLoginActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        jMenu3.add(itemAdminLogin);
 
         jMenu1.add(jMenu3);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/close.png"))); // NOI18N
-        jMenuItem1.setText("Exit");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+        itemExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/close.png"))); // NOI18N
+        itemExit.setText("Exit");
+        itemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemExitActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(itemExit);
 
         jMenuBar1.add(jMenu1);
 
@@ -251,10 +257,10 @@ public class LoginScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemExitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
@@ -292,9 +298,11 @@ public class LoginScreen extends javax.swing.JFrame {
 
             student.setUsername(txtUsername.getText());
             student.setPassword(String.valueOf(txtPassword.getPassword()));
-            if (admin.loginITI(student, "student")) { 
+            if (admin.loginITI(student, "student")) {
                 uie.showWindow(this, new WelcomeITI(student));
+                clearValues();
             } else {
+                getToolkit().beep();
                 uie.showError(this, "Invalid login! Please re-check your credentials");
                 clearValues();
             }
@@ -303,10 +311,41 @@ public class LoginScreen extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void itemAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAdminLoginActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showWindow(this, new LoginScreenAdmin());
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_itemAdminLoginActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            UIEnhancements uie = new UIEnhancements();
+            Validator validator = new Validator();
+            Admin admin = new Admin();
+            Student student = new Student();
+
+            if (validator.isEmpty(txtUsername.getText())) {
+                uie.showWarning(this, "Please enter your username");
+                txtUsername.grabFocus();
+
+            } else if (validator.isEmpty(String.valueOf(txtPassword.getPassword()))) {
+                uie.showWarning(this, "Please enter your password");
+                txtPassword.grabFocus();
+            } else {
+
+                student.setUsername(txtUsername.getText());
+                student.setPassword(String.valueOf(txtPassword.getPassword()));
+                if (admin.loginITI(student, "student")) {
+                    uie.showWindow(this, new WelcomeITI(student));
+                    clearValues();
+                } else {
+                    getToolkit().beep();
+                    uie.showError(this, "Invalid login! Please re-check your credentials");
+                    clearValues();
+                }
+            }
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments
@@ -339,6 +378,8 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCreateAcc;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JMenuItem itemAdminLogin;
+    private javax.swing.JMenuItem itemExit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -347,9 +388,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

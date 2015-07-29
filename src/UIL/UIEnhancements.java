@@ -122,5 +122,11 @@ public class UIEnhancements {
         }
         
     }
+    
+    public void goBackTwice(JDialog currentDialog, JDialog underlyingDialog){
+        
+        currentDialog.setVisible(false);
+        underlyingDialog.setVisible(false);
+    }
 
 }

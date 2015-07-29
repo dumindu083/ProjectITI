@@ -186,9 +186,11 @@ public class StudentAccount extends javax.swing.JFrame {
 
         txtCurLesson.setEditable(false);
         txtCurLesson.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtCurLesson.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         txtDoneLessons.setEditable(false);
         txtDoneLessons.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDoneLessons.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         txtPriorExp.setEditable(false);
         txtPriorExp.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

@@ -5,7 +5,6 @@
  */
 package UIL;
 
-import DBL.Lesson;
 import DBL.Student;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -59,7 +58,7 @@ public class RegularLesson extends javax.swing.JDialog {
 
     }
 
-    RegularLesson(java.awt.Frame parent, boolean modal, Lesson lesson) {
+    RegularLesson(java.awt.Frame parent, boolean modal, DBL.Lesson lesson) {
         
         this(parent, modal);
         this.lesson = lesson;
@@ -117,6 +116,7 @@ public class RegularLesson extends javax.swing.JDialog {
 
         txtDescription.setEditable(false);
         txtDescription.setColumns(20);
+        txtDescription.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
@@ -141,6 +141,7 @@ public class RegularLesson extends javax.swing.JDialog {
         jLabel3.setText("Title:");
 
         lblLessonNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblLessonNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblLessonNumber.setText("01");
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -255,6 +256,7 @@ public class RegularLesson extends javax.swing.JDialog {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Where it is on the Tabla", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
+        lblImage.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -299,18 +301,18 @@ public class RegularLesson extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGoBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnActivity, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                    .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActivity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnGoBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnActivity)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGoBack)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -319,12 +321,10 @@ public class RegularLesson extends javax.swing.JDialog {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +363,7 @@ public class RegularLesson extends javax.swing.JDialog {
 
     private void btnActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivityActionPerformed
         // TODO add your handling code here:
-        Activity activity = new Activity((Frame) this.getParent(), true, lesson);
+        Activity activity = new Activity((Frame) this.getParent(), true, lesson, this);
         
         new UIEnhancements().showDialog(activity);
     }//GEN-LAST:event_btnActivityActionPerformed
@@ -414,13 +414,10 @@ public class RegularLesson extends javax.swing.JDialog {
         });
     }
 
+    @Override
     protected JRootPane createRootPane() {
-        ActionListener actionListener = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
+        ActionListener actionListener = (ActionEvent e) -> {
+            dispose();
         };
         JRootPane rootPane = new JRootPane();
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);

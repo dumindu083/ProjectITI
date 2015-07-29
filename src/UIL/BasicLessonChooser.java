@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.BLesson;
 import DBL.Student;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -91,6 +92,11 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         btnWhatBols.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnWhatBols.setText("What are Bols?");
+        btnWhatBols.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnWhatBolsActionPerformed(evt);
+            }
+        });
 
         btnBolsBoth.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBolsBoth.setText("Bols from the Both");
@@ -102,6 +108,11 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         btnBolsDayan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBolsDayan.setText("Bols from Dayan");
+        btnBolsDayan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBolsDayanActionPerformed(evt);
+            }
+        });
 
         btnParts.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnParts.setText("Parts of a Tabla");
@@ -129,6 +140,11 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         btnTuning.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnTuning.setText("Tuning your Tabla");
+        btnTuning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTuningActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -368,7 +384,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        new UIEnhancements().showWindow(this, new RegularLessonPlan());
+        new UIEnhancements().showWindow(this, new RegularLessonPlan(this.student, welcomeITI));
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -387,31 +403,57 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void btnPlaceHandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceHandsActionPerformed
         // TODO add your handling code here:
+        
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("3");
+        bLesson.setTitle(btnPlaceHands.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "3");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
     }//GEN-LAST:event_btnPlaceHandsActionPerformed
 
     private void btnBolsBothActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsBothActionPerformed
         // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("8");
+        bLesson.setTitle(btnBolsBoth.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "8");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
     }//GEN-LAST:event_btnBolsBothActionPerformed
 
     private void btnPartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartsActionPerformed
         // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("2");
+        bLesson.setTitle(btnParts.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "2");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
     }//GEN-LAST:event_btnPartsActionPerformed
 
     private void btnBolsBayanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsBayanActionPerformed
         // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("7");
+        bLesson.setTitle(btnBolsBayan.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "7");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
     }//GEN-LAST:event_btnBolsBayanActionPerformed
 
     private void btnAllDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllDoneActionPerformed
         // TODO add your handling code here:
-        WelcomeITI witi = new WelcomeITI(student);
         if (student.getBasicLessonStat().equals("Undone")) {
             student.setBasicLessonStat("Done");
             student.updateStudentBasics(student);
+            this.welcomeITI.lblBasic.setText(student.getBasicLessonStat());
             if (student.getCurrentLesson() == 0) {
                 student.setCurrentLesson(1);
                 student.updateStudentCurrentLesson(student);
             }
-
+            
+            new UIEnhancements().showFeedback(this, "Congratulations! You're now allowed to proceed with lessons at ITI");
             this.dispose();
         } else {
             new UIEnhancements().showFeedback(this, "You're already done with basics");
@@ -421,8 +463,44 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void btnPostureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostureActionPerformed
         // TODO add your handling code here:
-
+        
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("1");
+        bLesson.getLessonData(bLesson, "1");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
+        
     }//GEN-LAST:event_btnPostureActionPerformed
+
+    private void btnTuningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTuningActionPerformed
+        // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("4");
+        bLesson.setTitle(btnTuning.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "4");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
+    }//GEN-LAST:event_btnTuningActionPerformed
+
+    private void btnWhatBolsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWhatBolsActionPerformed
+        // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("5");
+        bLesson.setTitle(btnWhatBols.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "5");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
+    }//GEN-LAST:event_btnWhatBolsActionPerformed
+
+    private void btnBolsDayanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsDayanActionPerformed
+        // TODO add your handling code here:
+        BLesson bLesson = new BLesson();
+        
+        bLesson.setLessonNo("6");
+        bLesson.setTitle(btnBolsDayan.getText()); // Remove this once the everything is right
+        bLesson.getLessonData(bLesson, "6");
+        new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
+    }//GEN-LAST:event_btnBolsDayanActionPerformed
 
     /**
      * @param args the command line arguments

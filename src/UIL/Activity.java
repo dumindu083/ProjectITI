@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
@@ -23,6 +24,7 @@ import javax.swing.UIManager;
 public class Activity extends javax.swing.JDialog {
     
     private Lesson  lesson;
+    private RegularLesson RegualarLesson;
 
     /**
      * Creates new form About
@@ -33,7 +35,7 @@ public class Activity extends javax.swing.JDialog {
         
         new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
         
-        
+        btnNextBol.setText("Start");
 
     }
 
@@ -41,15 +43,30 @@ public class Activity extends javax.swing.JDialog {
      *
      * @param parent
      * @param modal
-     * @param activity Activity object needed to be passed to update activity info
+     * @param lesson  Lesson object needed to be passed to update activity info
      */
     public Activity(java.awt.Frame parent, boolean modal, Lesson lesson) {
        this(parent, modal);
        
        //insert code for a lesson object to be used
        
-       this.lesson  = lesson;
+       lblActivityNumber.setText(lesson.getLessonNo());
+       lblLesson.setText(lesson.getTitle());
        
+       this.lesson  = lesson;
+
+    }
+    
+     public Activity(java.awt.Frame parent, boolean modal, Lesson lesson, JDialog RegularLesson) {
+       this(parent, modal);
+       
+       //insert code for a lesson object to be used
+       
+       lblActivityNumber.setText(lesson.getLessonNo());
+       lblLesson.setText(lesson.getTitle());
+       
+       this.lesson  = lesson;
+       this.RegualarLesson =  (RegularLesson) RegularLesson;
 
     }
 
@@ -75,7 +92,9 @@ public class Activity extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblActivityNumber = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblLesson = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnGoBack = new javax.swing.JButton();
@@ -117,13 +136,21 @@ public class Activity extends javax.swing.JDialog {
             }
         });
 
+        txtBolNo.setEditable(false);
+        txtBolNo.setBackground(new java.awt.Color(255, 255, 255));
         txtBolNo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtBolNo.setText("n of 10");
 
+        txtBolToPlay.setEditable(false);
+        txtBolToPlay.setBackground(new java.awt.Color(255, 255, 255));
         txtBolToPlay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        txtUserBol.setEditable(false);
+        txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
         txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        txtStatus.setEditable(false);
+        txtStatus.setBackground(new java.awt.Color(255, 255, 255));
         txtStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -135,20 +162,22 @@ public class Activity extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNextBol, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9)
                             .addComponent(lblBolNo)
                             .addComponent(jLabel11))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUserBol, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(txtBolNo)
-                            .addComponent(txtBolToPlay)
-                            .addComponent(txtStatus))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtBolNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -184,10 +213,16 @@ public class Activity extends javax.swing.JDialog {
         jLabel3.setText("Lesson regarded:");
 
         lblActivityNumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblActivityNumber.setText("01");
+        lblActivityNumber.setText("...");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Let's Play Na, Tin");
+        lblLesson.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblLesson.setText("Let's Play Na, Tin");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Passing Score:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("100%");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -195,16 +230,19 @@ public class Activity extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblActivityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblActivityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,8 +255,12 @@ public class Activity extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                    .addComponent(lblLesson))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(162, Short.MAX_VALUE))
         );
@@ -249,7 +291,7 @@ public class Activity extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGoBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGotoLessonRegPlan, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                    .addComponent(btnGotoLessonRegPlan, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -268,8 +310,8 @@ public class Activity extends javax.swing.JDialog {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,14 +350,15 @@ public class Activity extends javax.swing.JDialog {
 
     private void btnGotoLessonRegPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGotoLessonRegPlanActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new RegularLesson((Frame) this.getParent(), true).dispose();
         
+        new UIEnhancements().goBackTwice(this, RegualarLesson);
      
     }//GEN-LAST:event_btnGotoLessonRegPlanActionPerformed
 
     private void btnNextBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextBolActionPerformed
 
+        
+        btnNextBol.setText("Next Bol");
 //        for (int i = 1; i <= evt.getID(); i++) {
 //            
 //            txtBolNo.setText(i +" of 10");
@@ -374,13 +417,10 @@ public class Activity extends javax.swing.JDialog {
         });
     }
 
+    @Override
     protected JRootPane createRootPane() {
-        ActionListener actionListener = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
+        ActionListener actionListener = (ActionEvent e) -> {
+            dispose();
         };
         JRootPane rootPane = new JRootPane();
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -393,11 +433,12 @@ public class Activity extends javax.swing.JDialog {
     private javax.swing.JButton btnGotoLessonRegPlan;
     private javax.swing.JButton btnNextBol;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -405,6 +446,7 @@ public class Activity extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblActivityNumber;
     private javax.swing.JLabel lblBolNo;
+    private javax.swing.JLabel lblLesson;
     private javax.swing.JTextField txtBolNo;
     private javax.swing.JTextField txtBolToPlay;
     private javax.swing.JTextField txtStatus;

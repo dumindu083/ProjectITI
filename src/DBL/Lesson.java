@@ -87,8 +87,6 @@ public class Lesson {
     public void setImageData(byte[] ImageData) {
         this.ImageData = ImageData;
     }
-    
-    
 
     public void getLessonData(Lesson lesson, String LessonID) {
 
@@ -109,6 +107,35 @@ public class Lesson {
                 lesson.setPlayAreas(resultSet.getString(5));
                 lesson.setImageData(resultSet.getBytes(7));
 
+            } else {
+                new UIL.UIEnhancements().showError(null, "NO DATA");
+            }
+        } catch (SQLException ex) {
+//            Logger.getLogger(Lesson.class.getName()).log(Level.SEVERE, null, ex);
+            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n" + ex.getMessage());
+        }
+    }
+
+    public void getLessonData(BLesson bLesson, String LessonID) {
+
+        try {
+            DBConnection dBConnection = DBConnection.getInstance();
+
+            String SQL = "SELECT * FROM basicLesson WHERE Lesson_NO = " + bLesson.getLessonNo() + ";";
+
+            ResultSet resultSet = dBConnection.getValues(SQL);
+
+            if (resultSet.first()) {
+     
+                bLesson.setLessonNo(resultSet.getString(1));
+                bLesson.setTitle(resultSet.getString(2));
+                bLesson.setDescription(resultSet.getString(3));
+                bLesson.setPoint_1(resultSet.getString(4));
+                bLesson.setPoint_2(resultSet.getString(5));
+                bLesson.setPoint_3(resultSet.getString(6));
+                bLesson.setRegularLessonsInvolved(resultSet.getString(7));
+                bLesson.setImageData(resultSet.getBytes(8));
+                
             } else {
                 new UIL.UIEnhancements().showError(null, "NO DATA");
             }

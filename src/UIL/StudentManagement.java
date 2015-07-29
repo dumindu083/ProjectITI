@@ -116,6 +116,7 @@ public class StudentManagement extends javax.swing.JFrame {
 
         txtStudentID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtStudentID.setForeground(new java.awt.Color(204, 15, 16));
+        txtStudentID.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtStudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtStudentIDFocusLost(evt);
@@ -459,7 +460,7 @@ public class StudentManagement extends javax.swing.JFrame {
 
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
-        
+
         new DBL.Admin().logoutITI(this, this.welcomeITIAdmin, new LoginScreenAdmin());
 
     }//GEN-LAST:event_itemLogoutActionPerformed
@@ -540,7 +541,7 @@ public class StudentManagement extends javax.swing.JFrame {
         } else if (txtStudentID.getText().length() >= 4) {
             evt.consume();
             getToolkit().beep();
-        }
+        } 
 
     }//GEN-LAST:event_txtStudentIDKeyTyped
 

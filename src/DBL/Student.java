@@ -17,7 +17,7 @@ public class Student extends Admin {
     String PriorExpereince;
     String BasicLessonStat;
     int NumberOfLessonsCovered;
-    int CurrentLesson = 7;
+    int CurrentLesson;
     String DateRegistred;
 
     public String getBasicLessonStat() {
