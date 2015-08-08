@@ -100,26 +100,13 @@ public class Student extends Admin {
         }
 
     }
-    
-    public void updateStudentBasics(Student student){
-        
+
+    public void updateStudentBasics(Student student) {
+
         DBConnection dBConnection = DBConnection.getInstance();
-        
-        String SQL = "UPDATE  `iti`.`student` SET  `BasicLessonStat` =  'Done' WHERE  `student`.`Student_ID` ="+student.getUserID()+";";
-        
-        try {
-            dBConnection.insertValues(SQL);
-        } catch (SQLException ex) {
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
-            new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
-        }
-    } 
-    public void updateStudentCurrentLesson(Student student){
-        
-        DBConnection dBConnection = DBConnection.getInstance();
-        
-        String SQL = "UPDATE  `iti`.`student` SET  `CurrentLesson` =  '1' WHERE  `student`.`Student_ID` ="+student.getUserID()+";";
-        
+
+        String SQL = "UPDATE  `iti`.`student` SET  `BasicLessonStat` =  'Done' WHERE  `student`.`Student_ID` =" + student.getUserID() + ";";
+
         try {
             dBConnection.insertValues(SQL);
         } catch (SQLException ex) {
@@ -127,4 +114,24 @@ public class Student extends Admin {
             new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
         }
     }
+
+    public void updateStudentCurrentLesson(Student student) {
+
+        DBConnection dBConnection = DBConnection.getInstance();
+
+        String SQL;
+
+        if (student.getCurrentLesson() == 0) {
+            SQL = "UPDATE  `iti`.`student` SET  `CurrentLesson` =  '1' WHERE  `student`.`Student_ID` =" + student.getUserID() + ";";
+        } else {
+            SQL = "UPDATE  `iti`.`student` SET  `CurrentLesson` =  ' " + (student.getCurrentLesson() + 1) + " ' WHERE  `student`.`Student_ID` =" + student.getUserID() + ";";
+        }
+        try {
+            dBConnection.insertValues(SQL);
+        } catch (SQLException ex) {
+//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
+        }
+    }
+
 }

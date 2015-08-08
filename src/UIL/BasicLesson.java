@@ -68,7 +68,7 @@ public class BasicLesson extends javax.swing.JDialog {
         lblTitle.setText(bLesson.getTitle());
         txtDescription.setText(bLesson.getDescription());
         lblPoint1.setText(bLesson.getPoint_1());
-        if (bLesson.getPoint_2().equals("") && bLesson.getPoint_3().equals("") ) {
+        if (bLesson.getPoint_2() == null && bLesson.getPoint_3() == null ) {
             lblPoint2.setText("");
             lblPoint3.setText("");
         }
@@ -76,8 +76,6 @@ public class BasicLesson extends javax.swing.JDialog {
             lblPoint2.setText(bLesson.getPoint_2());
             lblPoint3.setText(bLesson.getPoint_3());
         }
-//        lblPoint2.setText(bLesson.getPoint_2());
-//            lblPoint3.setText(bLesson.getPoint_3());
         lblLessonsInvolved.setText(bLesson.getRegularLessonsInvolved());
         lblImageArea.setIcon(new ImageIcon(bLesson.getImageData()));
         this.blesson = bLesson;
@@ -117,6 +115,7 @@ public class BasicLesson extends javax.swing.JDialog {
         txtDescription.setEditable(false);
         txtDescription.setColumns(20);
         txtDescription.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDescription.setLineWrap(true);
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);
 
@@ -137,7 +136,7 @@ public class BasicLesson extends javax.swing.JDialog {
         jLabel2.setText("Points to note");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Regular lessons involved");
+        jLabel5.setText("Lessons involved");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Lesson No:");
@@ -190,20 +189,14 @@ public class BasicLesson extends javax.swing.JDialog {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLessonsInvolved, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPoint1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPoint3)
-                                    .addComponent(lblPoint2))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(lblPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPoint2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPoint3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblPoint1, lblPoint2, lblPoint3});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -228,7 +221,7 @@ public class BasicLesson extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblLessonsInvolved))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Image Illustration", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -242,7 +235,7 @@ public class BasicLesson extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblImageArea, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +306,6 @@ public class BasicLesson extends javax.swing.JDialog {
     private void btnPlayVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayVideoActionPerformed
 
         new UIEnhancements().openVideo("bailey.mpg", this);
-
 
     }//GEN-LAST:event_btnPlayVideoActionPerformed
 

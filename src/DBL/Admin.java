@@ -165,10 +165,14 @@ public class Admin {
         try {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "You've registered as an admin for ITI!");
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
 //            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
 //            ex.printStackTrace(); // Set up proper msg to the user...
-            new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
+            if (e.getMessage().contains("Duplicate entry")) {
+                new UIL.UIEnhancements().showWarning(window, "Please, try out a different username");
+            } else {
+                new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
+            }
         }
 
     }
@@ -193,10 +197,15 @@ public class Admin {
         try {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "Account created successfully...\nThank you for registering with ITI!s");
-        } catch (SQLException ex) {
+        } catch (SQLException e) {
 //            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
 //            ex.printStackTrace();
-            new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
+            if (e.getMessage().contains("Duplicate entry")) {
+                new UIL.UIEnhancements().showWarning(window, "Please, try out a different username");
+            } else {
+                new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
+            }
+            
         }
 
     }
@@ -249,6 +258,23 @@ public class Admin {
         
         new UIEnhancements().showWindow(currentWindow, loginWindow);
         underlyingWindow.dispose();
+        
+    }
+    
+     public boolean hasUsername(String Username, String tableName){
+        
+        try {
+            DBConnection dBConnection = DBConnection.getInstance();
+            
+            String SQL = "SELECT * FROM " + tableName + " WHERE Username = '" + Username + "';";
+
+            ResultSet resultSet = dBConnection.getValues(SQL);
+            
+            return resultSet.first();
+        } catch (SQLException ex) {
+            new UIEnhancements().showError(null, "Error in Database operations");
+            return false;
+        }
         
     }
     

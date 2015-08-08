@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.Admin;
 import DBL.Lesson;
 import DBL.Student;
 import javax.swing.JFrame;
@@ -17,7 +18,8 @@ import javax.swing.UIManager;
 public class RegularLessonPlan extends javax.swing.JFrame {
 
     private Student student;
-    private WelcomeITI welcomeITI;
+    private JFrame welcomeFrame;
+    private Admin admin;
 
     /**
      * CreatesF new form WelcomeScreen
@@ -47,7 +49,6 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         jButton13.setEnabled(false);
         jButton14.setEnabled(false);
         jButton15.setEnabled(false);
-
 
         if (currentLesson == 1) {
             jButton1.setEnabled(true);
@@ -190,8 +191,14 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         }
 
         this.student = student;
-        this.welcomeITI = (WelcomeITI) welcomeITI;
+        this.welcomeFrame = (WelcomeITI) welcomeITI;
 
+    }
+
+    RegularLessonPlan(Admin admin, JFrame welcomeITI) {
+        this();
+        this.admin = admin;
+        this.welcomeFrame = welcomeITI;
     }
 
     /**
@@ -553,8 +560,11 @@ public class RegularLessonPlan extends javax.swing.JFrame {
 
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
-
-        new DBL.Admin().logoutITI(this, this.welcomeITI, new LoginScreen());
+        if (student != null) {
+            new DBL.Admin().logoutITI(this, this.welcomeFrame, new LoginScreen());
+        } else {
+            new DBL.Admin().logoutITI(this, this.welcomeFrame, new LoginScreenAdmin());
+        }
 
     }//GEN-LAST:event_itemLogoutActionPerformed
 
@@ -566,19 +576,19 @@ public class RegularLessonPlan extends javax.swing.JFrame {
 
     private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
         // TODO add your handling code here:
-        new UIEnhancements().showWindow(this, new BasicLessonChooser());
+
+        //insert code to differentiate the studet's and admin's visibility of BasicLessonChooser
+        if (this.student != null) {
+            new UIEnhancements().showWindow(this, new BasicLessonChooser(student, welcomeFrame));
+        } else {
+            new UIEnhancements().showWindow(this, new BasicLessonChooser(admin, welcomeFrame));
+
+        }
     }//GEN-LAST:event_itemBasicActionPerformed
 
     private void itemWelcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemWelcomeActionPerformed
         // TODO add your handling code here:
-        WelcomeITI witi = new WelcomeITI(this.student);
-
-        if (witi.isDisplayable()) {
-            this.dispose();
-        } else {
-            new UIEnhancements().showWindow(this, witi);
-        }
-
+        this.dispose();
 
     }//GEN-LAST:event_itemWelcomeActionPerformed
 
@@ -595,7 +605,7 @@ public class RegularLessonPlan extends javax.swing.JFrame {
         Lesson lesson = new Lesson();
         lesson.setLessonNo(jButton9.getText());
         lesson.getLessonData(lesson, jButton9.getText());
-        new UIEnhancements().showDialog(new RegularLesson(this, true, lesson));    
+        new UIEnhancements().showDialog(new RegularLesson(this, true, lesson));
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

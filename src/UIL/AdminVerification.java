@@ -6,6 +6,7 @@
 package UIL;
 
 import DBL.Admin;
+import DBL.Student;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -29,10 +30,6 @@ public class AdminVerification extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-//        this.setUndecorated(false);
-//        getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-        
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -63,6 +60,15 @@ public class AdminVerification extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Password");
 
+        txtUName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtPWD.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPWD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPWDKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -73,7 +79,8 @@ public class AdminVerification extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                        .addGap(6, 6, 6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -87,11 +94,14 @@ public class AdminVerification extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtUName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,7 +166,7 @@ public class AdminVerification extends javax.swing.JDialog {
         // TODO add your handling code here:
         Validator validator = new Validator();
         UIEnhancements uie = new UIEnhancements();
-        
+
         if (validator.verifyAdmin(txtUName.getText(), String.valueOf(txtPWD.getPassword()))) {
             uie.showWindow((JFrame) this.getParent(), new RegistrationFormAdmin());
         } else {
@@ -166,6 +176,23 @@ public class AdminVerification extends javax.swing.JDialog {
             txtPWD.setText("");
         }
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void txtPWDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPWDKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Validator validator = new Validator();
+            UIEnhancements uie = new UIEnhancements();
+
+            if (validator.verifyAdmin(txtUName.getText(), String.valueOf(txtPWD.getPassword()))) {
+                uie.showWindow((JFrame) this.getParent(), new RegistrationFormAdmin());
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Credentials!", this.getTitle(), JOptionPane.ERROR_MESSAGE);
+                txtUName.grabFocus();
+                txtUName.selectAll();
+                txtPWD.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtPWDKeyPressed
 
     /**
      * @param args the command line arguments

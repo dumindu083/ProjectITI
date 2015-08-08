@@ -5,6 +5,8 @@
  */
 package UIL;
 
+import DBL.Lesson;
+import DBL.LessonActivity;
 import DBL.Student;
 import javax.swing.UIManager;
 
@@ -15,6 +17,8 @@ import javax.swing.UIManager;
 public class WelcomeITI extends javax.swing.JFrame {
 
     private Student student;
+    private Lesson lesson;
+    private DBL.LessonActivity lessonActivity;
 
     /**
      * Creates new form WelcomeScreen
@@ -31,8 +35,9 @@ public class WelcomeITI extends javax.swing.JFrame {
         lblRegular.setText(String.valueOf(student.getNumberOfLessonsCovered()));
         lblBasic.setText(student.getBasicLessonStat());
         lblCurrentLesson.setText(String.valueOf(student.getCurrentLesson()));
-        
-        
+        if(student.getBasicLessonStat().equals("Undone")){
+            btnCurrentActivity.setEnabled(false);
+        }
 
     }
 
@@ -58,8 +63,7 @@ public class WelcomeITI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblCurrentLesson = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCurrentActivity = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -154,9 +158,13 @@ public class WelcomeITI extends javax.swing.JFrame {
         lblCurrentLesson.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCurrentLesson.setText("11");
 
-        jButton1.setText("Current Lesson");
-
-        jButton2.setText("Activity");
+        btnCurrentActivity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCurrentActivity.setText(" Go to Current Activity");
+        btnCurrentActivity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCurrentActivityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -165,20 +173,13 @@ public class WelcomeITI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCurrentActivity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCurrentLesson, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(lblCurrentLesson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
-
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -187,9 +188,7 @@ public class WelcomeITI extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(lblCurrentLesson))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(btnCurrentActivity)
                 .addContainerGap())
         );
 
@@ -353,29 +352,45 @@ public class WelcomeITI extends javax.swing.JFrame {
 
     private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
         // TODO add your handling code here:
-        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student,this);
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student, this);
         new UIEnhancements().showWindow(basicLessonChooser);
     }//GEN-LAST:event_itemBasicActionPerformed
 
     private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
         // TODO add your handling code here:
-        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student,this);
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student, this);
         new UIEnhancements().showWindow(regularLessonPlan);
     }//GEN-LAST:event_itemRegularActionPerformed
 
     private void btnReferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReferActionPerformed
         // TODO add your handling code here:
 
-        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student,this);
+        BasicLessonChooser basicLessonChooser = new BasicLessonChooser(this.student, this);
         new UIEnhancements().showWindow(basicLessonChooser);
     }//GEN-LAST:event_btnReferActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
-        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student,this);
+        RegularLessonPlan regularLessonPlan = new RegularLessonPlan(this.student, this);
         new UIEnhancements().showWindow(regularLessonPlan);
 
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnCurrentActivityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurrentActivityActionPerformed
+        // TODO add your handling code here:
+
+        Lesson lesson = new Lesson();
+        LessonActivity lessonActivity = new LessonActivity();
+        
+        lesson.setLessonNo(String.valueOf(student.getCurrentLesson()));
+        lesson.getLessonData(lesson, String.valueOf(student.getCurrentLesson()));
+        
+        lessonActivity.setActivityID(String.valueOf(student.getCurrentLesson()));
+        lessonActivity.getActivityData(lessonActivity, String.valueOf(student.getCurrentLesson()));
+        
+        Activity activity = new Activity(this, true, lesson, this.student, lessonActivity, this);
+        new UIEnhancements().showDialog(activity);
+    }//GEN-LAST:event_btnCurrentActivityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,14 +422,13 @@ public class WelcomeITI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnCurrentActivity;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRefer;
     private javax.swing.JMenuItem itemBasic;
     private javax.swing.JMenuItem itemMyAcc;
     private javax.swing.JMenuItem itemRegular;
     private javax.swing.JMenuItem itemlogout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -433,7 +447,7 @@ public class WelcomeITI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     public javax.swing.JLabel lblBasic;
-    private javax.swing.JLabel lblCurrentLesson;
+    public javax.swing.JLabel lblCurrentLesson;
     private javax.swing.JLabel lblRegular;
     // End of variables declaration//GEN-END:variables
 }

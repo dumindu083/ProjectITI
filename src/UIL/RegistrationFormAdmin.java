@@ -9,7 +9,8 @@ import DBL.Admin;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-/**I
+/**
+ * 
  *
  * @author hp
  */
@@ -32,6 +33,10 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         txtEmail.setText("");
         GenderButtonGroup.clearSelection();
         txtFirstName.grabFocus();
+        lblPWMatch.setText("");
+        lblPWStat.setText("");
+        lblUsernameStat.setText("");
+        lblEmailStat.setText("");
     }
 
     /**
@@ -61,6 +66,9 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         btnMale = new javax.swing.JRadioButton();
         btnFemale = new javax.swing.JRadioButton();
         lblPWStat = new javax.swing.JLabel();
+        lblPWMatch = new javax.swing.JLabel();
+        lblUsernameStat = new javax.swing.JLabel();
+        lblEmailStat = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -97,17 +105,32 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         txtLastName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusLost(evt);
+            }
+        });
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
             }
         });
 
         txtConPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtConPasswordKeyReleased(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Gender");
@@ -122,6 +145,17 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
 
         lblPWStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPWStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        lblPWMatch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPWMatch.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        lblUsernameStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblUsernameStat.setForeground(java.awt.Color.red);
+
+        lblEmailStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblEmailStat.setForeground(java.awt.Color.blue);
+        lblEmailStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmailStat.setText("  ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,18 +179,24 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6))
-                                .addGap(46, 46, 46))
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPWMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(17, 17, 17)
+                                .addComponent(lblUsernameStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(17, 17, 17)
+                                .addComponent(lblEmailStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnMale)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -183,23 +223,28 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                     .addComponent(btnMale)
                     .addComponent(btnFemale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUsernameStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPWStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPWMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmailStat))
+                .addGap(36, 36, 36))
         );
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -281,7 +326,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOK)
                     .addComponent(btnClear))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,7 +373,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             txtPassword.grabFocus();
         } else if (validator.isEmpty(String.valueOf(txtConPassword.getPassword())) || !validator.isMatching(txtPassword.getPassword(), txtConPassword.getPassword())
                 || validator.containsApo(txtPassword.getText())) {
-            uie.showWarning(this, "Paswords unmatched! Please re-enter the password");
+            uie.showWarning(this, "Passwords unmatched! Please re-enter the password");
             txtConPassword.grabFocus();
             txtConPassword.selectAll();
         } else if (validator.isEmpty(txtEmail.getText()) || !validator.validateEmail(txtEmail.getText())) {
@@ -338,22 +383,19 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
             txtEmail.selectAll();
         } else if (uie.showConfirm(this, "Are you sure to submit this information?") == 0) {
 
-            //set admin attribs
             admin.setFirstName(txtFirstName.getText());
             admin.setLastName(txtLastName.getText());
             if (btnMale.isSelected()) {
                 admin.setGender(btnMale.getText());
-
             } else {
                 admin.setGender(btnFemale.getText());
             }
             admin.setUsername(txtUsername.getText());
             admin.setPassword(String.valueOf(txtConPassword.getPassword()));
             admin.setEmail(txtEmail.getText());
-            
-            
+
             admin.registerITI(admin, this);
-            
+
             uie.showWindow(this, new LoginScreenAdmin());
 
         }
@@ -366,19 +408,54 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         clearValues();
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void txtPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyTyped
+    private void txtConPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConPasswordKeyReleased
+        // TODO add your handling code here:
+        Validator validator = new Validator();
+
+        if (!validator.isMatching(txtPassword.getPassword(), txtConPassword.getPassword())) {
+            lblPWMatch.setText(":-(");
+            lblPWMatch.setForeground(Color.red);
+        } else {
+            lblPWMatch.setText(":-)");
+            lblPWMatch.setForeground(Color.BLUE);
+        }
+    }//GEN-LAST:event_txtConPasswordKeyReleased
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
         // TODO add your handling code here:
         if (txtPassword.getText().length() < 6) {
             lblPWStat.setText("Poor");
             lblPWStat.setForeground(Color.RED);
-        }
-        else if (txtPassword.getText().length() >= 6){
+        } else if (txtPassword.getText().length() >= 6) {
             lblPWStat.setText("Good");
-            lblPWStat.setForeground(Color.GREEN);
-        }
-        else if(txtPassword.getText().length() == 0)
+            lblPWStat.setForeground(Color.BLUE);
+        } else if (txtPassword.getText().length() == 0) {
             lblPWStat.setText("");
-    }//GEN-LAST:event_txtPasswordKeyTyped
+        }
+    }//GEN-LAST:event_txtPasswordKeyReleased
+
+    private void txtUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusLost
+        // TODO add your handling code here:
+        Admin admin = new Admin();
+        
+        if(admin.hasUsername(txtUsername.getText(), "admin")){
+            lblUsernameStat.setText("Try another");
+        }
+        else{
+            lblUsernameStat.setText("");
+        }
+    }//GEN-LAST:event_txtUsernameFocusLost
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        // TODO add your handling code here:
+        Validator validator = new Validator();
+        
+        if (validator.validateEmail(txtEmail.getText())) {
+            lblEmailStat.setText("OK");
+        } else {
+            lblEmailStat.setText("");
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
 
     /**
      * @param args the command line arguments
@@ -429,7 +506,10 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblEmailStat;
+    private javax.swing.JLabel lblPWMatch;
     private javax.swing.JLabel lblPWStat;
+    private javax.swing.JLabel lblUsernameStat;
     private javax.swing.JPasswordField txtConPassword;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;

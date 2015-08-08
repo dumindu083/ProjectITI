@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.Admin;
 import DBL.BLesson;
 import DBL.Student;
 import javax.swing.JFrame;
@@ -17,8 +18,9 @@ import javax.swing.UIManager;
 public class BasicLessonChooser extends javax.swing.JFrame {
 
     private Student student;
-    
-    private WelcomeITI welcomeITI;
+
+    private JFrame welcomFrame;
+    private Admin admin;
 
     /**
      * Creates new form WelcomeScreen
@@ -26,13 +28,21 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     public BasicLessonChooser() {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
+        btnAllDone.setEnabled(false);
     }
 
     public BasicLessonChooser(Student student, JFrame welcomeITI) {
         this();
         this.student = student;
-        this.welcomeITI = (WelcomeITI) welcomeITI;
+        this.welcomFrame = welcomeITI;
+        btnAllDone.setEnabled(true);
 
+    }
+
+    public BasicLessonChooser(Admin admin, JFrame welcomeITI) {
+        this();
+        this.admin = admin;
+        this.welcomFrame = welcomeITI;
     }
 
     /**
@@ -67,13 +77,13 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        itemWelcome = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        itemRegular = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         itemLogout = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        itemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Basic Lessons");
@@ -228,10 +238,10 @@ public class BasicLessonChooser extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnAllDone)))
+                                .addComponent(btnAllDone, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)))
         );
@@ -299,25 +309,25 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         jMenu3.setText("Go to");
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/welcome.png"))); // NOI18N
-        jMenuItem5.setText("Welcome");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        itemWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/welcome.png"))); // NOI18N
+        itemWelcome.setText("Welcome");
+        itemWelcome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                itemWelcomeActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu3.add(itemWelcome);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/lesson.png"))); // NOI18N
         jMenu4.setText("Lessons");
 
-        jMenuItem4.setText("Regular");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        itemRegular.setText("Regular");
+        itemRegular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                itemRegularActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        jMenu4.add(itemRegular);
 
         jMenu3.add(jMenu4);
 
@@ -337,14 +347,14 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/info.png"))); // NOI18N
-        jMenuItem2.setText("About ITI");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        itemAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/info.png"))); // NOI18N
+        itemAbout.setText("About ITI");
+        itemAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                itemAboutActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(itemAbout);
 
         jMenuBar1.add(jMenu2);
 
@@ -373,39 +383,38 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
         // TODO add your handling code here:
-        new DBL.Admin().logoutITI(this, this.welcomeITI, new LoginScreen());
+        if (this.student != null) {
+            new DBL.Admin().logoutITI(this, this.welcomFrame, new LoginScreen());
+        } else {
+            new DBL.Admin().logoutITI(this, this.welcomFrame, new LoginScreenAdmin());
+        }
     }//GEN-LAST:event_itemLogoutActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void itemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAboutActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
 
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_itemAboutActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
         // TODO add your handling code here:
-        new UIEnhancements().showWindow(this, new RegularLessonPlan(this.student, welcomeITI));
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-
-        WelcomeITI witi = new WelcomeITI(this.student);
-
-        if (witi.isDisplayable()) {
-            this.dispose();
+        if (this.student != null) {
+            new UIEnhancements().showWindow(this, new RegularLessonPlan(student, welcomFrame));
         } else {
-            new UIEnhancements().showWindow(this, witi);
+            new UIEnhancements().showWindow(this, new RegularLessonPlan(admin, welcomFrame));
         }
+    }//GEN-LAST:event_itemRegularActionPerformed
 
-
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void itemWelcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemWelcomeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_itemWelcomeActionPerformed
 
     private void btnPlaceHandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceHandsActionPerformed
         // TODO add your handling code here:
-        
+
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("3");
         bLesson.setTitle(btnPlaceHands.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "3");
@@ -415,7 +424,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private void btnBolsBothActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsBothActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("8");
         bLesson.setTitle(btnBolsBoth.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "8");
@@ -425,7 +434,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private void btnPartsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartsActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("2");
         bLesson.setTitle(btnParts.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "2");
@@ -435,7 +444,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private void btnBolsBayanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsBayanActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("7");
         bLesson.setTitle(btnBolsBayan.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "7");
@@ -447,12 +456,14 @@ public class BasicLessonChooser extends javax.swing.JFrame {
         if (student.getBasicLessonStat().equals("Undone")) {
             student.setBasicLessonStat("Done");
             student.updateStudentBasics(student);
-            this.welcomeITI.lblBasic.setText(student.getBasicLessonStat());
+            WelcomeITI witi = (WelcomeITI) this.welcomFrame;
+            witi.lblBasic.setText(student.getBasicLessonStat());
+            witi.btnCurrentActivity.setEnabled(true);
             if (student.getCurrentLesson() == 0) {
                 student.setCurrentLesson(1);
                 student.updateStudentCurrentLesson(student);
+                witi.lblCurrentLesson.setText(String.valueOf(student.getCurrentLesson()));
             }
-            
             new UIEnhancements().showFeedback(this, "Congratulations! You're now allowed to proceed with lessons at ITI");
             this.dispose();
         } else {
@@ -463,19 +474,19 @@ public class BasicLessonChooser extends javax.swing.JFrame {
 
     private void btnPostureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostureActionPerformed
         // TODO add your handling code here:
-        
+
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("1");
         bLesson.getLessonData(bLesson, "1");
         new UIEnhancements().showDialog(new BasicLesson(this, true, bLesson));
-        
+
     }//GEN-LAST:event_btnPostureActionPerformed
 
     private void btnTuningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTuningActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("4");
         bLesson.setTitle(btnTuning.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "4");
@@ -485,7 +496,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private void btnWhatBolsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWhatBolsActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("5");
         bLesson.setTitle(btnWhatBols.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "5");
@@ -495,7 +506,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private void btnBolsDayanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBolsDayanActionPerformed
         // TODO add your handling code here:
         BLesson bLesson = new BLesson();
-        
+
         bLesson.setLessonNo("6");
         bLesson.setTitle(btnBolsDayan.getText()); // Remove this once the everything is right
         bLesson.getLessonData(bLesson, "6");
@@ -553,7 +564,10 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private javax.swing.JButton btnPosture;
     private javax.swing.JButton btnTuning;
     private javax.swing.JButton btnWhatBols;
+    private javax.swing.JMenuItem itemAbout;
     private javax.swing.JMenuItem itemLogout;
+    private javax.swing.JMenuItem itemRegular;
+    private javax.swing.JMenuItem itemWelcome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -564,9 +578,6 @@ public class BasicLessonChooser extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

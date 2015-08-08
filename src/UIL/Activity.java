@@ -6,7 +6,8 @@
 package UIL;
 
 import DBL.Lesson;
-import java.awt.Frame;
+import DBL.LessonActivity;
+import DBL.Student;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,9 +23,13 @@ import javax.swing.UIManager;
  * @author hp
  */
 public class Activity extends javax.swing.JDialog {
-    
-    private Lesson  lesson;
+
+    private Lesson lesson;
     private RegularLesson RegualarLesson;
+    private Student student;
+    private JFrame welcomeFrame;
+    private LessonActivity lessonActivity;
+    private String[] bols;
 
     /**
      * Creates new form About
@@ -32,9 +37,9 @@ public class Activity extends javax.swing.JDialog {
     public Activity(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
-        
+
         btnNextBol.setText("Start");
 
     }
@@ -43,36 +48,55 @@ public class Activity extends javax.swing.JDialog {
      *
      * @param parent
      * @param modal
-     * @param lesson  Lesson object needed to be passed to update activity info
+     * @param lesson Lesson object needed to be passed to update activity info
+     * @param student Student object needed to be passed to get the info about a
+     * student for the activity
+     * @param lessonActivity
      */
-    public Activity(java.awt.Frame parent, boolean modal, Lesson lesson) {
-       this(parent, modal);
-       
-       //insert code for a lesson object to be used
-       
-       lblActivityNumber.setText(lesson.getLessonNo());
-       lblLesson.setText(lesson.getTitle());
-       
-       this.lesson  = lesson;
+    public Activity(java.awt.Frame parent, boolean modal, Lesson lesson, Student student, LessonActivity lessonActivity, JFrame welcomeFrame) {
+        this(parent, modal);
+        this.lesson = lesson;
+        this.student = student;
+        this.welcomeFrame = welcomeFrame;
+        this.lessonActivity = lessonActivity;
 
-    }
-    
-     public Activity(java.awt.Frame parent, boolean modal, Lesson lesson, JDialog RegularLesson) {
-       this(parent, modal);
-       
-       //insert code for a lesson object to be used
-       
-       lblActivityNumber.setText(lesson.getLessonNo());
-       lblLesson.setText(lesson.getTitle());
-       
-       this.lesson  = lesson;
-       this.RegualarLesson =  (RegularLesson) RegularLesson;
+        //insert code for a lesson object to be used
+        lblLesson.setText(lesson.getTitle());
+        
+        //taken from the lessonActivity object
+        lblActivityNumber.setText(lessonActivity.getActivityID());
+        
+        lblActivityTitle.setText(lessonActivity.getActivityTitle());
+        lblPassingScore.setText(lessonActivity.getPassingScore());
+        String[] bols = lessonActivity.getBolsToPlay();
 
+        this.bols = bols;
+        this.setTitle(this.getTitle() + lesson.getLessonNo());
+        
     }
 
-    
+    public Activity(java.awt.Frame parent, boolean modal, Lesson lesson, LessonActivity lessonActivity, JDialog RegularLesson) {
+        this(parent, modal);
 
-    
+        this.lesson = lesson;
+        this.lessonActivity = lessonActivity;
+
+        //taken from the lesson object
+        lblLesson.setText(lesson.getTitle());
+
+        //taken from the lessonActivity object
+        lblActivityNumber.setText(lessonActivity.getActivityID());
+        lblActivityTitle.setText(lessonActivity.getActivityTitle());
+        lblPassingScore.setText(lessonActivity.getPassingScore());
+        String[] bols = lessonActivity.getBolsToPlay();
+
+        this.bols = bols;
+
+        this.setTitle(this.getTitle() + lesson.getLessonNo());
+        this.RegualarLesson = (RegularLesson) RegularLesson;
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,14 +118,16 @@ public class Activity extends javax.swing.JDialog {
         lblActivityNumber = new javax.swing.JLabel();
         lblLesson = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblPassingScore = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblActivityTitle = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnGoBack = new javax.swing.JButton();
         btnGotoLessonRegPlan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ITI - Activity on Lesson ");
+        setTitle("ITI - Activity for Lesson ");
         setName("about"); // NOI18N
         setResizable(false);
 
@@ -139,7 +165,7 @@ public class Activity extends javax.swing.JDialog {
         txtBolNo.setEditable(false);
         txtBolNo.setBackground(new java.awt.Color(255, 255, 255));
         txtBolNo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtBolNo.setText("n of 10");
+        txtBolNo.setText("0 of 10");
 
         txtBolToPlay.setEditable(false);
         txtBolToPlay.setBackground(new java.awt.Color(255, 255, 255));
@@ -148,6 +174,7 @@ public class Activity extends javax.swing.JDialog {
         txtUserBol.setEditable(false);
         txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
         txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtUserBol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txtStatus.setEditable(false);
         txtStatus.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,7 +196,7 @@ public class Activity extends javax.swing.JDialog {
                             .addComponent(jLabel9)
                             .addComponent(lblBolNo)
                             .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,13 +243,19 @@ public class Activity extends javax.swing.JDialog {
         lblActivityNumber.setText("...");
 
         lblLesson.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblLesson.setText("Let's Play Na, Tin");
+        lblLesson.setText("Lesson Here");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Passing Score:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("100%");
+        lblPassingScore.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPassingScore.setText("Passing Score Here");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Activity Title:");
+
+        lblActivityTitle.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblActivityTitle.setText("Title Here");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -236,12 +269,14 @@ public class Activity extends javax.swing.JDialog {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
+                                .addComponent(jLabel5)
                                 .addComponent(jLabel4))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblActivityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(lblPassingScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblActivityTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -253,16 +288,20 @@ public class Activity extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(lblActivityNumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblLesson))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLesson)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblActivityTitle)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(lblPassingScore, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Options", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -311,7 +350,7 @@ public class Activity extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,26 +389,74 @@ public class Activity extends javax.swing.JDialog {
 
     private void btnGotoLessonRegPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGotoLessonRegPlanActionPerformed
         // TODO add your handling code here:
-        
-        new UIEnhancements().goBackTwice(this, RegualarLesson);
-     
+        if (this.student != null) {
+            WelcomeITI witi = (WelcomeITI) this.welcomeFrame;
+            
+            RegularLessonPlan regularLessonPlan = new RegularLessonPlan(student, witi);
+            new UIEnhancements().showWindow(regularLessonPlan);
+            regularLessonPlan.setAlwaysOnTop(true);
+            this.dispose();
+        } else {
+            new UIEnhancements().goBackTwice(this, RegualarLesson);
+        }
+
     }//GEN-LAST:event_btnGotoLessonRegPlanActionPerformed
 
     private void btnNextBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextBolActionPerformed
 
-        
-        btnNextBol.setText("Next Bol");
-//        for (int i = 1; i <= evt.getID(); i++) {
-//            
-//            txtBolNo.setText(i +" of 10");
-//            if (i==10) {
-//                btnNextBol.setText("Finish");
-//            }
-//        }
-        
-//        new UIEnhancements().openVideo("bailey.mpg", this);
-        
-        
+        int currentBolNo = Integer.parseInt(String.valueOf(txtBolNo.getText().charAt(0)));
+
+        switch (currentBolNo) {
+            case 0:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                txtUserBol.grabFocus();
+                btnNextBol.setText("Next");
+                break;
+            case 1:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 2:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 3:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 4:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 5:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 6:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 7:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 8:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                break;
+            case 9:
+                txtBolToPlay.setText(this.bols[currentBolNo]);
+                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+                btnNextBol.setText("Finish");
+                btnNextBol.setEnabled(false);
+                break;
+
+            default:
+                throw new AssertionError();
+        }
+
     }//GEN-LAST:event_btnNextBolActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
@@ -391,7 +478,7 @@ public class Activity extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Activity.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -399,7 +486,7 @@ public class Activity extends javax.swing.JDialog {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the dialog */
@@ -436,17 +523,19 @@ public class Activity extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblActivityNumber;
+    private javax.swing.JLabel lblActivityTitle;
     private javax.swing.JLabel lblBolNo;
     private javax.swing.JLabel lblLesson;
+    private javax.swing.JLabel lblPassingScore;
     private javax.swing.JTextField txtBolNo;
     private javax.swing.JTextField txtBolToPlay;
     private javax.swing.JTextField txtStatus;

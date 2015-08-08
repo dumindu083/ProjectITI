@@ -14,6 +14,7 @@ import javax.swing.UIManager;
  * @author hp
  */
 public class AdminAccount extends javax.swing.JFrame {
+    private Admin admin;
 
     /**
      * Creates new form WelcomeScreen
@@ -38,7 +39,7 @@ public class AdminAccount extends javax.swing.JFrame {
         txtConPassword.setText(admin.getPassword());
         txtEmail.setText(admin.getEmail());
         
-        
+        this.admin = admin;
     }
 
     private void clearValues() {
@@ -49,6 +50,9 @@ public class AdminAccount extends javax.swing.JFrame {
         txtEmail.setText("");
         GenderButtonGroup.clearSelection();
         txtFirstName.grabFocus();
+        lblPWMatch.setText("");
+        lblPWStat.setText("");
+        lblEmailStat.setText("");
     }
 
     /**
@@ -79,6 +83,9 @@ public class AdminAccount extends javax.swing.JFrame {
         btnFemale = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
         txtAdminID = new javax.swing.JTextField();
+        lblPWMatch = new javax.swing.JLabel();
+        lblPWStat = new javax.swing.JLabel();
+        lblEmailStat = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -118,10 +125,25 @@ public class AdminAccount extends javax.swing.JFrame {
         txtUsername.setEnabled(false);
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
 
         txtConPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtConPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtConPasswordKeyReleased(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Gender");
@@ -142,6 +164,22 @@ public class AdminAccount extends javax.swing.JFrame {
         txtAdminID.setForeground(java.awt.Color.red);
         txtAdminID.setEnabled(false);
 
+        lblPWMatch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPWMatch.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        lblPWStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblPWStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        lblEmailStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblEmailStat.setForeground(java.awt.Color.blue);
+        lblEmailStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmailStat.setText("  ");
+        lblEmailStat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lblEmailStatKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -151,11 +189,22 @@ public class AdminAccount extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4))
-                        .addGap(46, 46, 46)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(71, 71, 71)
+                                .addComponent(lblEmailStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPWMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnMale)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -210,15 +259,18 @@ public class AdminAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPWStat, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtConPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPWMatch, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmailStat))
                 .addContainerGap())
         );
 
@@ -302,8 +354,7 @@ public class AdminAccount extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
 
-        new UIEnhancements().showWindow(this, new WelcomeITIAdmin());
-//        this.dispose();
+        new UIEnhancements().showWindow(this, new WelcomeITIAdmin(this.admin));
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -351,7 +402,6 @@ public class AdminAccount extends javax.swing.JFrame {
             admin.setLastName(txtLastName.getText());
             if (btnMale.isSelected()) {
                 admin.setGender(btnMale.getText());
-
             } else {
                 admin.setGender(btnFemale.getText());
             }
@@ -369,9 +419,58 @@ public class AdminAccount extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-
         clearValues();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void txtConPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConPasswordKeyReleased
+        // TODO add your handling code here:
+        Validator validator = new Validator();
+        
+        if(!validator.isMatching(txtPassword.getPassword(), txtConPassword.getPassword())){
+            lblPWMatch.setText(":-(");
+            lblPWMatch.setForeground(Color.red);
+        }
+        else{
+            lblPWMatch.setText(":-)");
+            lblPWMatch.setForeground(Color.BLUE);
+        }
+    }//GEN-LAST:event_txtConPasswordKeyReleased
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        // TODO add your handling code here:
+        if (txtPassword.getText().length() < 6) {
+            lblPWStat.setText("Poor");
+            lblPWStat.setForeground(Color.RED);
+        }
+        else if (txtPassword.getText().length() >=6){
+            lblPWStat.setText("Good");
+            lblPWStat.setForeground(Color.BLUE);
+        }
+        else if(txtPassword.getText().length() == 0)
+            lblPWStat.setText("");
+    }//GEN-LAST:event_txtPasswordKeyReleased
+
+    private void lblEmailStatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lblEmailStatKeyReleased
+        // TODO add your handling code here:
+        Validator validator = new Validator();
+        
+        if (validator.validateEmail(txtEmail.getText())) {
+            lblEmailStat.setText("OK");
+        } else {
+            lblEmailStat.setText("");
+        }
+    }//GEN-LAST:event_lblEmailStatKeyReleased
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        // TODO add your handling code here:
+        Validator validator = new Validator();
+        
+        if (validator.validateEmail(txtEmail.getText())) {
+            lblEmailStat.setText("OK");
+        } else {
+            lblEmailStat.setText("");
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
 
     /**
      * @param args the command line arguments
@@ -434,6 +533,9 @@ public class AdminAccount extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblEmailStat;
+    private javax.swing.JLabel lblPWMatch;
+    private javax.swing.JLabel lblPWStat;
     private javax.swing.JTextField txtAdminID;
     private javax.swing.JPasswordField txtConPassword;
     private javax.swing.JTextField txtEmail;

@@ -307,8 +307,6 @@ public class LoginScreen extends javax.swing.JFrame {
                 clearValues();
             }
         }
-
-
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void itemAdminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAdminLoginActionPerformed

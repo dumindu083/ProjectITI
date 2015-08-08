@@ -50,7 +50,7 @@ public class UIEnhancements {
     }
 
     /**
-     * Displays the JFrame mentioned as windowToOpen
+     * Displays the JFrame mentioned as windowToOpen, without disposing any of the underlying windows
      *
      * @param windowToOpen
      */
@@ -60,20 +60,16 @@ public class UIEnhancements {
             System.err.println("Mention the corresponding windows to open");
         } else {
             windowToOpen.setVisible(true);
-
         }
-
     }
+    
     public void showDialog(JDialog windowToOpen) {
         
-        
         if (windowToOpen == null) {
-            System.err.println("Mention the corresponding windows to open");
+            System.err.println("Mention the window to open");
         } else {
             windowToOpen.setVisible(true);
-
         }
-
     }
 
     public void showAboutUs(JFrame container) {
@@ -92,7 +88,6 @@ public class UIEnhancements {
         } else {
             JOptionPane.showMessageDialog(null, message, window.getTitle(), JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     public void showFeedback(JFrame window, String message) {
@@ -109,7 +104,6 @@ public class UIEnhancements {
 
         av.setVisible(true);
         return parent;
-
     }
     
     public void openVideo(String filename, JDialog dialog){
@@ -120,7 +114,6 @@ public class UIEnhancements {
         } catch (IOException ex) {
             this.showError((JFrame) dialog.getParent(), "Error in openning file");
         }
-        
     }
     
     public void goBackTwice(JDialog currentDialog, JDialog underlyingDialog){

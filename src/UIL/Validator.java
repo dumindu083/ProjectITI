@@ -25,7 +25,6 @@ public class Validator {
 
         boolean status = false;
 
-//        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-­]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\­.[A-Za-z]{2,})$";
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
@@ -81,7 +80,6 @@ public class Validator {
             status = false;
         }
         return status;
-
     }
 
     public boolean isItemSelected(JComboBox comboBoxName) {
@@ -104,11 +102,9 @@ public class Validator {
             return false;
         }
         return true;
-
     }
     
     public boolean isWithinRange(String number, int min, int max){
-        
         
         int value = Integer.parseInt(number);
         boolean status = value >= min && value <= max;

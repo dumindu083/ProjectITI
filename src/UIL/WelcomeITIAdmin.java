@@ -15,26 +15,21 @@ import javax.swing.UIManager;
 public class WelcomeITIAdmin extends javax.swing.JFrame {
 
     private Admin admin;
-    
-    
+
     /**
      * Creates new form WelcomeScreen
      */
     public WelcomeITIAdmin() {
         initComponents();
         new UIEnhancements().setIcon("tablaIconFull.png", this);
-        
+
     }
 
     WelcomeITIAdmin(Admin admin) {
-        
+
         this();
         this.admin = admin;
-        
-    }
-    
-    public void close(){
-        this.dispose();
+
     }
 
     /**
@@ -51,15 +46,14 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnMyAcc = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnBasic = new javax.swing.JButton();
+        btnRegular = new javax.swing.JButton();
         btnStudentMgt = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         itemMyAcc = new javax.swing.JMenuItem();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         itemlogout = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -90,16 +84,21 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Edit a Basic Lesson");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBasic.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnBasic.setText("Basic Lessons");
+        btnBasic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBasicActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton3.setText("Edit a Regular Lesson");
+        btnRegular.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRegular.setText("Regular Lessons");
+        btnRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegularActionPerformed(evt);
+            }
+        });
 
         btnStudentMgt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnStudentMgt.setText("Student Management");
@@ -125,14 +124,14 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(btnBasic)
+                    .addComponent(btnRegular)
                     .addComponent(btnStudentMgt)
                     .addComponent(btnLogout))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnLogout, btnMyAcc, btnStudentMgt, jButton2, jButton3});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBasic, btnLogout, btnMyAcc, btnRegular, btnStudentMgt});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,14 +139,14 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnMyAcc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnBasic)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btnRegular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnStudentMgt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogout)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -195,7 +194,6 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
             }
         });
         jMenu3.add(itemMyAcc);
-        jMenu3.add(jSeparator2);
 
         jMenu1.add(jMenu3);
         jMenu1.add(jSeparator1);
@@ -289,17 +287,18 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     private void itemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAboutActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showAboutUs(this);
-        
+
     }//GEN-LAST:event_itemAboutActionPerformed
 
     private void itemBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBasicActionPerformed
         // TODO add your handling code here:
-        new UIEnhancements().showWindow(this, new BasicLessonChooser());
+        new UIEnhancements().showWindow(new BasicLessonChooser(this.admin, this));
+        
     }//GEN-LAST:event_itemBasicActionPerformed
 
     private void itemRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegularActionPerformed
         // TODO add your handling code here:
-        new UIEnhancements().showWindow(this, new BasicLessonChooser());
+        new UIEnhancements().showWindow(new RegularLessonPlan(this.admin, this));
     }//GEN-LAST:event_itemRegularActionPerformed
 
     private void itemStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemStudentsActionPerformed
@@ -311,22 +310,21 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     private void itemMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMyAccActionPerformed
         // TODO add your handling code here:
         AdminAccount adminAccount = new AdminAccount(this.admin);
-        new UIEnhancements().showWindow(this,adminAccount);
+        new UIEnhancements().showWindow(this, adminAccount);
 //        if (adminAccount.isShowing()) {
 //            itemMyAcc.setEnabled(false);
 //        }
 //        else{
 //            itemMyAcc.setEnabled(true);
 //        }
-        
-        
-        
+
+
     }//GEN-LAST:event_itemMyAccActionPerformed
 
     private void btnMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccActionPerformed
         // TODO add your handling code here:
         AdminAccount adminAccount = new AdminAccount(this.admin);
-        new UIEnhancements().showWindow(this,adminAccount);
+        new UIEnhancements().showWindow(this, adminAccount);
     }//GEN-LAST:event_btnMyAccActionPerformed
 
     private void btnStudentMgtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentMgtActionPerformed
@@ -340,9 +338,15 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         new UIEnhancements().showWindow(this, new LoginScreenAdmin());
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBasicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBasicActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new UIEnhancements().showWindow(new BasicLessonChooser(this.admin, this));
+    }//GEN-LAST:event_btnBasicActionPerformed
+
+    private void btnRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegularActionPerformed
+        // TODO add your handling code here:
+        new UIEnhancements().showWindow(new RegularLessonPlan(this.admin, this));
+    }//GEN-LAST:event_btnRegularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,7 +370,7 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -378,8 +382,10 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBasic;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMyAcc;
+    private javax.swing.JButton btnRegular;
     private javax.swing.JButton btnStudentMgt;
     private javax.swing.JMenuItem itemAbout;
     private javax.swing.JMenuItem itemBasic;
@@ -387,8 +393,6 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRegular;
     private javax.swing.JMenuItem itemStudents;
     private javax.swing.JMenuItem itemlogout;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
@@ -400,6 +404,5 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
