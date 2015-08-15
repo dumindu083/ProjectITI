@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import org.apache.log4j.Logger;
 /**
  *
  * @author hp
@@ -19,14 +19,14 @@ public class DBConnection {
 
     private static DBConnection DBInstance = new DBConnection();
 
-    private DBConnection() {
-    } //
+    private DBConnection() {}
+    
+    final private Logger logger = Logger.getLogger(DBConnection.class);
 
     public static DBConnection getInstance() {
 
         if (DBInstance == null) {
             DBInstance = new DBConnection();
-
         }
 
         return DBInstance;
@@ -43,7 +43,7 @@ public class DBConnection {
 
             return DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
+            logger.error("Error in making connection to the Database", ex);
         }
         return null;
     }

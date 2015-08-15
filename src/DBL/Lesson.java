@@ -7,7 +7,7 @@ package DBL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import org.apache.log4j.Logger;
 /**
  *
  * @author hp
@@ -23,6 +23,8 @@ public class Lesson {
     String ImagePath;
     byte[] ImageData;
     String videoPath;
+    
+    private Logger logger = Logger.getLogger(Student.class);
 
     public String getLessonNo() {
         return lessonNo;
@@ -111,8 +113,8 @@ public class Lesson {
                 new UIL.UIEnhancements().showError(null, "NO DATA");
             }
         } catch (SQLException ex) {
-//            Logger.getLogger(Lesson.class.getName()).log(Level.SEVERE, null, ex);
-            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n" + ex.getMessage());
+            logger.error("Error in DB Operations", ex);
+            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
         }
     }
 
@@ -140,8 +142,8 @@ public class Lesson {
                 new UIL.UIEnhancements().showError(null, "NO DATA");
             }
         } catch (SQLException ex) {
-//            Logger.getLogger(Lesson.class.getName()).log(Level.SEVERE, null, ex);
-            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations\n" + ex.getMessage());
+            logger.error("Error in DB Operations", ex);
+            new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
         }
     }
 }

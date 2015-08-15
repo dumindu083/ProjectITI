@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -27,6 +28,8 @@ public class BasicLesson extends javax.swing.JDialog {
     private Student student;
     private Admin admin;
     private BLesson blesson;
+    
+    final private Logger logger = Logger.getLogger(BasicLesson.class);
 
     /**
      * Creates new form About
@@ -36,6 +39,13 @@ public class BasicLesson extends javax.swing.JDialog {
         initComponents();
 
         new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
+//        jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMinimum());
+//        txtDescription.setCaretPosition();
+//        jScrollPane1.repaint();
+//        jScrollPane1.getViewport().setViewPosition(new Point(0, 0));
+//        System.out.println(txtDescription.getCaretPosition());
+//        jScrollPane1.set
+//        jScrollPane1.setViewportView(txtDescription);
 
     }
 
@@ -50,6 +60,7 @@ public class BasicLesson extends javax.swing.JDialog {
         this(parent, modal);
 
        //insert code for a student object to be fired
+        
         this.student = student;
     }
 
@@ -113,30 +124,30 @@ public class BasicLesson extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Description", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         txtDescription.setEditable(false);
+        txtDescription.setBackground(new java.awt.Color(254, 250, 255));
         txtDescription.setColumns(20);
         txtDescription.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDescription.setLineWrap(true);
         txtDescription.setRows(5);
+        txtDescription.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtDescription);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Points to note");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Lessons involved");
+        jLabel5.setText("Lessons involved:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Lesson No:");
@@ -174,27 +185,29 @@ public class BasicLesson extends javax.swing.JDialog {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblLessonNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLessonsInvolved, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPoint2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPoint3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPoint2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPoint3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblLessonNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(5, 5, 5)
+                                .addComponent(lblLessonsInvolved, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -214,7 +227,7 @@ public class BasicLesson extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(lblPoint1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPoint2)
+                .addComponent(lblPoint2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPoint3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -305,8 +318,66 @@ public class BasicLesson extends javax.swing.JDialog {
 
     private void btnPlayVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayVideoActionPerformed
 
-        new UIEnhancements().openVideo("bailey.mpg", this);
+//        new UIEnhancements().openVideo("bailey.mpg", this);
+        UIEnhancements uie = new UIEnhancements();
 
+        BLesson lesson = this.blesson;
+
+        int lessonNumber = Integer.parseInt(lesson.getLessonNo());
+
+        switch (lessonNumber) {
+            case 1:
+                uie.openVideo("Basic_1.mp4", this);
+                break;
+            case 2:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 3:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 4:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 5:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 6:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 7:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 8:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 9:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 10:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 11:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 12:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 13:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 14:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 15:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            default:
+                try {
+                    throw new AssertionError();
+                } catch (Exception e) {
+                    logger.warn("Video choice out of range",e);
+                }
+        }
     }//GEN-LAST:event_btnPlayVideoActionPerformed
 
     /**

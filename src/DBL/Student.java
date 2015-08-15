@@ -7,6 +7,7 @@ package DBL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -19,6 +20,8 @@ public class Student extends Admin {
     int NumberOfLessonsCovered;
     int CurrentLesson;
     String DateRegistred;
+    
+    private Logger logger = Logger.getLogger(Student.class);
 
     public String getBasicLessonStat() {
         return BasicLessonStat;
@@ -90,11 +93,12 @@ public class Student extends Admin {
 
         } catch (SQLException ex) {
 
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
             if (ex.getMessage().equals("Illegal operation on empty result set.")) {
                 new UIL.UIEnhancements().showError(null, "The student you search can't be found!");
+                logger.info("No Student found!!", ex);
             } else {
                 new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
+                logger.error("Error in DB Operation", ex);
             }
             return false;
         }
@@ -110,7 +114,7 @@ public class Student extends Admin {
         try {
             dBConnection.insertValues(SQL);
         } catch (SQLException ex) {
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error in DB Operations", ex);
             new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
         }
     }
@@ -129,7 +133,7 @@ public class Student extends Admin {
         try {
             dBConnection.insertValues(SQL);
         } catch (SQLException ex) {
-//            Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Error in DB Operations", ex);
             new UIL.UIEnhancements().showError(null, "Something went wrong in writing to the DB");
         }
     }

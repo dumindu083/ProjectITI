@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import DBL.Lesson;
 import DBL.LessonActivity;
 import DBL.Student;
 import java.awt.Frame;
@@ -17,20 +18,22 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
-
+import org.apache.log4j.Logger;
 /**
  *
  * @author hp
  */
 public class RegularLesson extends javax.swing.JDialog {
 
-    private DBL.Student student;
+    private Student student;
 
-    private DBL.Lesson lesson;
+    private Lesson lesson;
 
-    private DBL.LessonActivity lessonActivity;
+    private LessonActivity lessonActivity;
 
     private RegularLessonPlan rlp = new RegularLessonPlan();
+    
+    final private Logger logger = Logger.getLogger(RegularLesson.class);
 
     /**
      * Creates new form About
@@ -368,7 +371,65 @@ public class RegularLesson extends javax.swing.JDialog {
 
     private void btnPlayVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayVideoActionPerformed
 
-        new UIEnhancements().openVideo("bailey.mpg", this);
+        UIEnhancements uie = new UIEnhancements();
+
+        Lesson lesson = this.lesson;
+
+        int lessonNumber = Integer.parseInt(lesson.getLessonNo());
+
+        switch (lessonNumber) {
+            case 1:
+                uie.openVideo("bailey.mp4", this);
+                break;
+            case 2:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 3:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 4:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 5:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 6:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 7:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 8:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 9:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 10:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 11:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 12:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 13:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 14:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            case 15:
+                uie.showError((JFrame) this.getParent(), "No Video");
+                break;
+            default:
+                try {
+                    throw new AssertionError();
+                } catch (Exception e) {
+                    logger.warn("Video choice out of range",e);
+                }
+        }
 
     }//GEN-LAST:event_btnPlayVideoActionPerformed
 

@@ -9,7 +9,7 @@ import UIL.UIEnhancements;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
-
+import org.apache.log4j.Logger;
 /**
  *
  * @author hp
@@ -24,6 +24,8 @@ public class Admin {
     String Email;
     String Username;
     String Password;
+    
+    private Logger logger = Logger.getLogger(Admin.class);
 
     public String getUserID() {
         return UserID;
@@ -107,6 +109,7 @@ public class Admin {
             }
         } catch (SQLException ex) {
 //            ex.printStackTrace();
+            logger.error("SQL - Error in Login Proccess", ex);
             new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
             return false;
         }
@@ -144,7 +147,7 @@ public class Admin {
                 return false;
             }
         } catch (SQLException ex) {
-//            ex.printStackTrace();
+            logger.error("SQL - Error in Login Proccess", ex);
             new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
             return false;
         }
