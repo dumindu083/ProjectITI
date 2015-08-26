@@ -467,7 +467,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         Student student = new Student();
         
         if(student.hasUsername(txtUsername.getText(), "student")){
-            lblUsernameStat.setText("Try another");
+            lblUsernameStat.setText("Try Different");
         }
         else{
             lblUsernameStat.setText("");

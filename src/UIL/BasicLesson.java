@@ -318,7 +318,6 @@ public class BasicLesson extends javax.swing.JDialog {
 
     private void btnPlayVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayVideoActionPerformed
 
-//        new UIEnhancements().openVideo("bailey.mpg", this);
         UIEnhancements uie = new UIEnhancements();
 
         BLesson lesson = this.blesson;

@@ -5,6 +5,7 @@
  */
 package UIL;
 
+import BPL.MusicPlayer;
 import BPL.SoundRecorder;
 import DBL.Lesson;
 import DBL.LessonActivity;
@@ -44,8 +45,8 @@ public class Activity extends javax.swing.JDialog {
 
         new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
 
-        btnNextBol.setText("Start");
-//        btnPlay.setEnabled(false);
+        btnStarttBol.setText("Start");
+//        btnRecord.setEnabled(false);
 
     }
 
@@ -67,17 +68,17 @@ public class Activity extends javax.swing.JDialog {
 
         //insert code for a lesson object to be used
         lblLesson.setText(lesson.getTitle());
-        
+
         //taken from the lessonActivity object
         lblActivityNumber.setText(lessonActivity.getActivityID());
-        
+
         lblActivityTitle.setText(lessonActivity.getActivityTitle());
         lblPassingScore.setText(lessonActivity.getPassingScore());
         String[] bols = lessonActivity.getBolsToPlay();
 
         this.bols = bols;
         this.setTitle(this.getTitle() + lesson.getLessonNo());
-        
+
     }
 
     public Activity(java.awt.Frame parent, boolean modal, Lesson lesson, LessonActivity lessonActivity, JDialog RegularLesson) {
@@ -107,19 +108,6 @@ public class Activity extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lblBolNo = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        btnNextBol = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        txtBolNo = new javax.swing.JTextField();
-        txtBolToPlay = new javax.swing.JTextField();
-        txtUserBol = new javax.swing.JTextField();
-        txtStatus = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        btnPlay = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblActivityNumber = new javax.swing.JLabel();
@@ -128,144 +116,28 @@ public class Activity extends javax.swing.JDialog {
         lblPassingScore = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblActivityTitle = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btnStarttBol = new javax.swing.JButton();
+        btnConfim = new javax.swing.JButton();
+        txtBolToPlay = new javax.swing.JTextField();
+        txtUserBol = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        btnRecord = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnListen = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnGoBack = new javax.swing.JButton();
         btnGotoLessonRegPlan = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ITI - Activity for Lesson ");
         setName("about"); // NOI18N
         setResizable(false);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Evaluation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        jPanel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        lblBolNo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblBolNo.setText("Bol No: ");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setText("Bol to Play:");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("Your Turn: ");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("Status");
-
-        btnNextBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnNextBol.setText("Next");
-        btnNextBol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextBolActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        txtBolNo.setEditable(false);
-        txtBolNo.setBackground(new java.awt.Color(255, 255, 255));
-        txtBolNo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtBolNo.setText("0 of 10");
-
-        txtBolToPlay.setEditable(false);
-        txtBolToPlay.setBackground(new java.awt.Color(255, 255, 255));
-        txtBolToPlay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtUserBol.setEditable(false);
-        txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
-        txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtUserBol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtUserBol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserBolActionPerformed(evt);
-            }
-        });
-
-        txtStatus.setEditable(false);
-        txtStatus.setBackground(new java.awt.Color(255, 255, 255));
-        txtStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jButton1.setText("Exit");
-
-        btnPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/play.png"))); // NOI18N
-        btnPlay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnPlay.setPreferredSize(new java.awt.Dimension(33, 9));
-        btnPlay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnNextBol)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(lblBolNo)
-                            .addComponent(jLabel11)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBolNo, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(txtBolToPlay)
-                            .addComponent(txtUserBol)
-                            .addComponent(txtStatus))))
-                .addContainerGap())
-        );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnNextBol, jButton1, jButton2});
-
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBolNo)
-                    .addComponent(txtBolNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNextBol)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
-        );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Activity No:");
@@ -298,19 +170,17 @@ public class Activity extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                .addComponent(lblPassingScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblActivityTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblActivityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblLesson, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(lblActivityNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPassingScore)
+                            .addComponent(lblActivityTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -333,9 +203,140 @@ public class Activity extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(lblPassingScore, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Evaluation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        jPanel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Feedback");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Status");
+
+        btnStarttBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnStarttBol.setText("Start");
+        btnStarttBol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStarttBolActionPerformed(evt);
+            }
+        });
+
+        btnConfim.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnConfim.setText("Confirm");
+        btnConfim.setEnabled(false);
+        btnConfim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfimActionPerformed(evt);
+            }
+        });
+
+        txtBolToPlay.setEditable(false);
+        txtBolToPlay.setBackground(new java.awt.Color(255, 255, 255));
+        txtBolToPlay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtUserBol.setEditable(false);
+        txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
+        txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtUserBol.setText("user bol here");
+        txtUserBol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        txtStatus.setEditable(false);
+        txtStatus.setBackground(new java.awt.Color(255, 255, 255));
+        txtStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jButton1.setText("Done");
+
+        btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/record.png"))); // NOI18N
+        btnRecord.setToolTipText("Start Record");
+        btnRecord.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRecord.setPreferredSize(new java.awt.Dimension(33, 9));
+        btnRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecordActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btnListen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/play.png"))); // NOI18N
+        btnListen.setToolTipText("Listen Record");
+        btnListen.setEnabled(false);
+        btnListen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnListen.setPreferredSize(new java.awt.Dimension(33, 9));
+        btnListen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListenActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Bol:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnStarttBol)
+                            .addComponent(jLabel12)
+                            .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnConfim, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addGap(33, 33, 33)
+                            .addComponent(txtStatus))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnStarttBol)
+                    .addComponent(btnRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfim))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Options", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
@@ -361,11 +362,10 @@ public class Activity extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGoBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGotoLessonRegPlan, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGotoLessonRegPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,22 +377,8 @@ public class Activity extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UIL/tablaIcon150.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -400,21 +386,29 @@ public class Activity extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -423,16 +417,29 @@ public class Activity extends javax.swing.JDialog {
 
     private void repeatBolsPlay(int currentBolNo) {
         txtBolToPlay.setText(this.bols[currentBolNo]);
-        txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
-        if(!btnPlay.isEnabled()) btnPlay.setEnabled(true);
-        if(!txtUserBol.getText().isEmpty()) txtUserBol.setText("");
+        if (!btnRecord.isEnabled()) {
+            btnRecord.setEnabled(true);
+        }
+        if (!txtUserBol.getText().isEmpty()) {
+            txtUserBol.setText("");
+        }
     }
-    
+
+    private void getBolsPlay(int BolNo) {
+        txtBolToPlay.setText(this.bols[BolNo]);
+        if (!btnRecord.isEnabled()) {
+            btnRecord.setEnabled(true);
+        }
+        if (!txtUserBol.getText().isEmpty()) {
+            txtUserBol.setText("");
+        }
+    }
+
     private void btnGotoLessonRegPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGotoLessonRegPlanActionPerformed
         // TODO add your handling code here:
         if (this.student != null) {
             WelcomeITI witi = (WelcomeITI) this.welcomeFrame;
-            
+
             RegularLessonPlan regularLessonPlan = new RegularLessonPlan(student, witi);
             new UIEnhancements().showWindow(regularLessonPlan);
             regularLessonPlan.setAlwaysOnTop(true);
@@ -443,98 +450,113 @@ public class Activity extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnGotoLessonRegPlanActionPerformed
 
-    private void btnNextBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextBolActionPerformed
+    private void btnStarttBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStarttBolActionPerformed
 
-        int currentBolNo = Integer.parseInt(String.valueOf(txtBolNo.getText().charAt(0)));
+        int currentBolNo = 0;
 
-        switch (currentBolNo) {
-            case 0:
-                txtBolToPlay.setText(this.bols[currentBolNo]);
-                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
-                txtUserBol.grabFocus();
-                btnNextBol.setText("Next");
-                if(!btnPlay.isEnabled()) btnPlay.setEnabled(true);
-//                txtUserBol.setText("");
-                break;
-            case 1:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 2:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 3:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 4:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 5:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 6:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 7:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 8:
-                repeatBolsPlay(currentBolNo);
-                break;
-            case 9:
-                repeatBolsPlay(currentBolNo);
-                btnNextBol.setText("Finish");
-                btnNextBol.setEnabled(false);
-                break;
-            default:
-                throw new AssertionError();
+//        switch (currentBolNo) {
+//            case 0:
+//                txtBolToPlay.setText(this.bols[currentBolNo]);
+//                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
+//                txtUserBol.grabFocus();
+//                btnNextBol.setText("Next");
+//                if(!btnPlay.isEnabled()) btnPlay.setEnabled(true);
+////                txtUserBol.setText("");
+//                break;
+//            case 1:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 2:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 3:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 4:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 5:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 6:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 7:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 8:
+//                repeatBolsPlay(currentBolNo);
+//                break;
+//            case 9:
+//                repeatBolsPlay(currentBolNo);
+//                btnNextBol.setText("Finish");
+//                btnNextBol.setEnabled(false);
+//                break;
+//            default:
+//                throw new AssertionError();
+//        }
+        
+        if (currentBolNo == 0) {
+            txtBolToPlay.setText(this.bols[currentBolNo]);
+//            txtBolNo.setText(String.valueOf(++currentBolNo + " of 1"));
+            txtUserBol.grabFocus();
+//            btnStarttBol.setText("Next");
+            if(!btnRecord.isEnabled()) btnRecord.setEnabled(true);
+            jLabel2.setText("");
+            btnStarttBol.setText("Redo");
+        } else {
+            
         }
 
-    }//GEN-LAST:event_btnNextBolActionPerformed
+    }//GEN-LAST:event_btnStarttBolActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnGoBackActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnConfimActionPerformed
 
-    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+    private void btnRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordActionPerformed
         // TODO add your handling code here:
-        
-        btnPlay.setEnabled(false);
+
+        btnRecord.setEnabled(false);
         txtUserBol.setForeground(Color.LIGHT_GRAY);
 //        txtUserBol.setText("Recording...");
-        
+        jLabel2.setText("Recorded");
+
         SoundRecorder soundRecorder = new SoundRecorder();
-        
+
         Thread stopper = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
                     Thread.sleep(5000);
-                    
+
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Activity.class.getName()).log(Level.ERROR, null, ex);
                 }
-                soundRecorder.finish(txtUserBol);
-                
+                soundRecorder.finish(btnListen, btnConfim);
+
             }
         });
         stopper.start();
-        
+
         soundRecorder.start(txtUserBol);
-        
-        
+
 //        System.out.println(stopper.isAlive());
 //        soundRecorder.finish(txtUserBol);
-    }//GEN-LAST:event_btnPlayActionPerformed
+    }//GEN-LAST:event_btnRecordActionPerformed
 
-    private void txtUserBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserBolActionPerformed
+    private void btnListenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserBolActionPerformed
+        MusicPlayer musicPlayer = new MusicPlayer();
+        
+        musicPlayer.playRecord();
+    }//GEN-LAST:event_btnListenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -584,29 +606,29 @@ public class Activity extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfim;
     private javax.swing.JButton btnGoBack;
     private javax.swing.JButton btnGotoLessonRegPlan;
-    private javax.swing.JButton btnNextBol;
-    private javax.swing.JButton btnPlay;
+    private javax.swing.JButton btnListen;
+    private javax.swing.JButton btnRecord;
+    private javax.swing.JButton btnStarttBol;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblActivityNumber;
     private javax.swing.JLabel lblActivityTitle;
-    private javax.swing.JLabel lblBolNo;
     private javax.swing.JLabel lblLesson;
     private javax.swing.JLabel lblPassingScore;
-    private javax.swing.JTextField txtBolNo;
     private javax.swing.JTextField txtBolToPlay;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtUserBol;

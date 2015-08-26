@@ -7,6 +7,7 @@ package BPL;
 
 import java.io.File;
 import java.io.IOException;
+
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -14,6 +15,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
+
+import javax.swing.JButton;
 import javax.swing.JTextField;
 import org.apache.log4j.Logger;
 
@@ -26,7 +29,7 @@ public class SoundRecorder {
     // record duration, in milliseconds
     static final long RECORD_TIME = 5000;
     
-    final private Logger logger = Logger.getLogger(SoundRecorder.class);
+    final static private Logger logger = Logger.getLogger(SoundRecorder.class);
 
     //Creation of file
     File wavFile = new File("recos/RecordedAudio.wav");
@@ -41,9 +44,9 @@ public class SoundRecorder {
      * Defines an audio format
      */
     AudioFormat getAudioFormat() {
-        float sampleRate = 16000;
+        float sampleRate = 44100; //keep this limited to 44100Hz as per the need
         int sampleSizeInBits = 8;
-        int channels = 2;
+        int channels = 1;
         boolean signed = true;
         boolean bigEndian = true;
         AudioFormat format = new AudioFormat(sampleRate, sampleSizeInBits,
@@ -75,7 +78,7 @@ public class SoundRecorder {
             
             AudioInputStream ais = new AudioInputStream(line);
 
-            textField.setText("Recording...");
+//            textField.setText("Recording...");
             System.out.println("Recording...");
 
 //            if (wavFile.exists()) {
@@ -86,7 +89,6 @@ public class SoundRecorder {
             AudioSystem.write(ais, fileType, wavFile);
 
         } catch (LineUnavailableException | IOException ex) {
-//            Logger.getLogger(SoundRecorder.class.getName()).log(Level.WARN, "Error in Sound capturing", ex);
             logger.error("Error in Sound capturing or file creation \n"+ex.getMessage(), ex);
         }
 
@@ -94,12 +96,12 @@ public class SoundRecorder {
     
     /**
      * Closes the target data line to finish capturing and recording
-     * @param textField TextField you need to display the status of recording
      */
-    public void finish(JTextField textField) {
+    public void finish(JButton playButton, JButton confirmButton) {
         line.stop();
         line.close();
-        textField.setText("Lording...");
+        playButton.setEnabled(true);
+        confirmButton.setEnabled(true);
 
     }
 
@@ -119,7 +121,7 @@ public class SoundRecorder {
                 try {
                     Thread.sleep(RECORD_TIME);
                 } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+                    logger.error("InterruptedException in Recording thread", ex);
                 }
 //                recorder.finish();
             }

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/DBL/AdminTest.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/WelcomeITI.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/Activity.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/StudentManagement.java</file>
@@ -11,26 +12,33 @@
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/log4j.properties</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/LoginScreen.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/UIEnhancements.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/UIL/UIEnhancementsTest.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/BPL/SoundRecorder.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/RegularLessonPlan.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/DBL/Lesson.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/LoginScreenAdmin.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/Validator.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/AdminAccount.java</file>
-            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/RegistrationForm.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/BPL/MusicPlayer.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/StudentAccount.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/DBL/Admin.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/BasicLesson.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/DBL/LessonActivityTest.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/DBL/Student.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/BasicLessonChooser.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/DBL/BLesson.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/RegistrationFormAdmin.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/RegularLesson.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/DBL/DBConnectionTest.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/DBL/LessonTest.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/AdminVerification.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/logs/admin.log</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/UIL/ValidatorTest.java</file>
+            <file>jar:file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/lib/jahmm-0.6.2-sources.jar!/be/ac/ulg/montefiore/run/distributions/GaussianDistribution.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/BPL/Activity.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/UIL/About.java</file>
             <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/src/DBL/LessonActivity.java</file>
+            <file>file:/E:/Educational/ICBT/Semester%20III/Final%20Project/Project%20ITI/test/DBL/StudentTest.java</file>
         </group>
     </open-files>
 </project-private>

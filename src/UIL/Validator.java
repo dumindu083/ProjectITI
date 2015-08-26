@@ -52,8 +52,8 @@ public class Validator {
     }
     
     /**
-     * Returns true if the text contains Apostrophe 
-     * @param text
+     * Returns true if the text contains Apostrophe. Invocation of this method will protect the database from buggy Strings.
+     * @param text String that needed to be validated
      * @return
      */
     public boolean containsApo(String text){

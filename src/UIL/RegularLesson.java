@@ -379,7 +379,7 @@ public class RegularLesson extends javax.swing.JDialog {
 
         switch (lessonNumber) {
             case 1:
-                uie.openVideo("bailey.mp4", this);
+                uie.openVideo("Basic_1.mp4", this);
                 break;
             case 2:
                 uie.showError((JFrame) this.getParent(), "No Video");

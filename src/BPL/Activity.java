@@ -11,9 +11,7 @@ package BPL;
  */
 public class Activity {
     
-    
-    
-    
+
     
     
     

@@ -146,7 +146,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
         lblPWStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPWStat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        lblPWMatch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblPWMatch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblPWMatch.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         lblUsernameStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
