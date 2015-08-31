@@ -26,7 +26,7 @@ public class RegularLessonPlan extends javax.swing.JFrame {
      */
     public RegularLessonPlan() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
 
     }
 

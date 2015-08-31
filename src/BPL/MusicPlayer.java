@@ -36,7 +36,6 @@ public class MusicPlayer {
             clip.open(audioInputStream);
             clip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-            ex.printStackTrace();
             logger.error("Exception while playing the record...", ex);
         }
     }

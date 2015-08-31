@@ -25,7 +25,7 @@ public class WelcomeITI extends javax.swing.JFrame {
      */
     public WelcomeITI() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
     }
 
     WelcomeITI(Student student) {

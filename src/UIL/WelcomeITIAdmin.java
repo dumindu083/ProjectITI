@@ -21,7 +21,7 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
      */
     public WelcomeITIAdmin() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
 
     }
 
@@ -311,14 +311,6 @@ public class WelcomeITIAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         AdminAccount adminAccount = new AdminAccount(this.admin);
         new UIEnhancements().showWindow(this, adminAccount);
-//        if (adminAccount.isShowing()) {
-//            itemMyAcc.setEnabled(false);
-//        }
-//        else{
-//            itemMyAcc.setEnabled(true);
-//        }
-
-
     }//GEN-LAST:event_itemMyAccActionPerformed
 
     private void btnMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccActionPerformed

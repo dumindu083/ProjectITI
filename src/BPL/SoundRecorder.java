@@ -6,6 +6,8 @@
 package BPL;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioFileFormat;
@@ -17,22 +19,24 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import org.apache.log4j.Logger;
-
 
 /**
  *
  * @author hp
  */
 public class SoundRecorder {
+
     // record duration, in milliseconds
     static final long RECORD_TIME = 5000;
-    
+
     final static private Logger logger = Logger.getLogger(SoundRecorder.class);
+    
+    //File name 
+    String filename = "recos/RecordedAudio.wav";
 
     //Creation of file
-    File wavFile = new File("recos/RecordedAudio.wav");
+    File wavFile = new File(filename);
 
     // format of audio file
     AudioFileFormat.Type fileType = AudioFileFormat.Type.WAVE;
@@ -44,6 +48,7 @@ public class SoundRecorder {
      * Defines an audio format
      */
     AudioFormat getAudioFormat() {
+        
         float sampleRate = 44100; //keep this limited to 44100Hz as per the need
         int sampleSizeInBits = 8;
         int channels = 1;
@@ -57,9 +62,8 @@ public class SoundRecorder {
 
     /**
      *
-     * @param textField TextField you need to display the status of recording
      */
-    public void start(JTextField textField) {
+    public void start() {
 
         try {
             AudioFormat format = getAudioFormat();
@@ -74,11 +78,11 @@ public class SoundRecorder {
             line = (TargetDataLine) AudioSystem.getLine(info); //where the exception jumps up
             line.open(format);
             line.start(); //start capturing
+//            System.out.println(line.getBufferSize());
             System.out.println("Start Capturing...");
-            
+
             AudioInputStream ais = new AudioInputStream(line);
 
-//            textField.setText("Recording...");
             System.out.println("Recording...");
 
 //            if (wavFile.exists()) {
@@ -87,13 +91,14 @@ public class SoundRecorder {
 //                
 //            }
             AudioSystem.write(ais, fileType, wavFile);
+            
 
         } catch (LineUnavailableException | IOException ex) {
-            logger.error("Error in Sound capturing or file creation \n"+ex.getMessage(), ex);
+            logger.error("Error in Sound capturing or file creation \n" + ex.getMessage(), ex);
         }
 
     }
-    
+
     /**
      * Closes the target data line to finish capturing and recording
      */
@@ -103,6 +108,39 @@ public class SoundRecorder {
         playButton.setEnabled(true);
         confirmButton.setEnabled(true);
 
+    }
+    public void finish() {
+        line.stop();
+        line.close();
+        
+    }
+    
+    public void getFFT(){
+        
+        byte buffersize[] = new byte[line.getBufferSize()];
+        String filename = this.filename;
+        
+        FileOutputStream os = null;
+        
+        try {
+            os = new FileOutputStream(filename);
+        } catch (FileNotFoundException ex) {
+            logger.error(ex);
+        }
+        
+        int read = 0;
+        if (null != os) {
+            
+            while(line.isRunning()){
+            
+                
+            
+            }
+        
+        
+       
+            
+        }
     }
 
     /**
@@ -123,16 +161,13 @@ public class SoundRecorder {
                 } catch (InterruptedException ex) {
                     logger.error("InterruptedException in Recording thread", ex);
                 }
-//                recorder.finish();
+                recorder.finish();
             }
         });
 
-//        stopper.start();
-
-        // start recording
-//        recorder.start();
-
+        stopper.start();
+         
+        recorder.start();
     }
-    
-    
+
 }

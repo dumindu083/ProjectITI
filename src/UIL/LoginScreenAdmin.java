@@ -20,7 +20,7 @@ public class LoginScreenAdmin extends javax.swing.JFrame {
      */
     public LoginScreenAdmin() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
 
     }
 

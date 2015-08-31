@@ -45,10 +45,9 @@ public class UIEnhancementsTest {
     @Test
     public void testSetIcon() {
         System.out.println("setIcon");
-        String imageName = "";
-        JFrame jFrame = null;
+        JFrame jFrame = new JFrame();
         UIEnhancements instance = new UIEnhancements();
-        instance.setIcon(imageName, jFrame);
+        instance.setIcon(jFrame);
 
     }
 
@@ -170,7 +169,7 @@ public class UIEnhancementsTest {
         System.out.println("showAdminDialog");
         JFrame parent = null;
         UIEnhancements instance = new UIEnhancements();
-        JFrame expResult = null;
+        JFrame expResult = new JFrame();
         JFrame result = instance.showAdminDialog(parent);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

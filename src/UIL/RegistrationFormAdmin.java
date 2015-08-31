@@ -21,7 +21,7 @@ public class RegistrationFormAdmin extends javax.swing.JFrame {
      */
     public RegistrationFormAdmin() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
     }
 
     private void clearValues() {

@@ -21,7 +21,7 @@ public class AdminAccount extends javax.swing.JFrame {
      */
     public AdminAccount() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
     }
 
     AdminAccount(Admin admin) {

@@ -45,7 +45,7 @@ public class RegularLesson extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        new UIEnhancements().setIcon("tablaIcon.png", (JFrame) this.getParent());
+        new UIEnhancements().setIcon((JFrame) this.getParent());
 
     }
 

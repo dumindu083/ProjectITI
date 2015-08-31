@@ -27,7 +27,7 @@ public class BasicLessonChooser extends javax.swing.JFrame {
      */
     public BasicLessonChooser() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
         btnAllDone.setEnabled(false);
     }
 

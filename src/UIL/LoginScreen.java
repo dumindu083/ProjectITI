@@ -21,7 +21,7 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIcon.png", this);
+        new UIEnhancements().setIcon(this);
 
     }
 

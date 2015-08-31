@@ -7,26 +7,35 @@ package UIL;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.apache.log4j.Logger;
 /**
  *
  * @author hp
  */
 public class UIEnhancements {
+    
+    final static private Logger logger = Logger.getLogger(UIEnhancements.class);
 
-    public void setIcon(String imageName, JFrame jFrame) {
+    /**
+     * Sets the icon of a window as the logo of the ITI.
+     * @param jFrame window to be set the icon
+     */
+    public void setIcon(JFrame jFrame) {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(this.getClass().getResource(imageName));
+            image = ImageIO.read(this.getClass().getResource("tablaIcon.png"));
 
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Error in finding the logo of the ITI", ex);
         }
         jFrame.setIconImage(image);
     }
@@ -57,7 +66,7 @@ public class UIEnhancements {
     public void showWindow(JFrame windowToOpen) {
 
         if (windowToOpen == null) {
-            System.err.println("Mention the corresponding windows to open");
+            showError(null, "Mention the corresponding windows to open");
         } else {
             windowToOpen.setVisible(true);
         }
@@ -78,10 +87,27 @@ public class UIEnhancements {
         about.setVisible(true);
     }
 
+    /**Pops up a wanning message on the interface. if the window is null this'll show a standard warning message titled
+     * "Caution"
+     *
+     * @param window is the window on which the message is displayed.
+     * @param message is the text to be appeared in the message.
+     */
     public void showWarning(JFrame window, String message) {
-        JOptionPane.showMessageDialog(null, message, window.getTitle(), JOptionPane.WARNING_MESSAGE);
+        if (window == null) {
+            JOptionPane.showMessageDialog(null, message, "Caution", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, message, window.getTitle(), JOptionPane.WARNING_MESSAGE);
+        }
     }
 
+    
+    /**Pops up an error message on the interface. if the window is null this'll show a standard error message titled
+     * "Error"
+     *
+     * @param window is the window on which the message is displayed.
+     * @param message is the text to be appeared in the message.
+     */
     public void showError(JFrame window, String message) {
         if (window == null) {
             JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
@@ -90,8 +116,20 @@ public class UIEnhancements {
         }
     }
 
+    /**
+     *  Shows an information message on the interface about the current status of the operation in which this is invoked. 
+     * if the window is null this'll show a standard warning message titled "Information"
+     * 
+     * 
+     * @param window is the window on which the message is displayed.
+     * @param message is the text to be appeared in the message.
+     */
     public void showFeedback(JFrame window, String message) {
-        JOptionPane.showMessageDialog(window, message, window.getTitle(), JOptionPane.INFORMATION_MESSAGE);
+        if (window == null) {
+            JOptionPane.showMessageDialog(null, message, "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(window, message, window.getTitle(), JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public int showConfirm(JFrame window, String message) {

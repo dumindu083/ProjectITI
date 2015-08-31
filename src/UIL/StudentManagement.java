@@ -25,7 +25,7 @@ public class StudentManagement extends javax.swing.JFrame {
      */
     public StudentManagement() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
         txtStudentID.grabFocus();
     }
 

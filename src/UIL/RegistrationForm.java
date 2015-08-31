@@ -22,7 +22,7 @@ public class RegistrationForm extends javax.swing.JFrame {
      */
     public RegistrationForm() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
     }
 
     private void clearValues() {

@@ -22,7 +22,7 @@ public class StudentAccount extends javax.swing.JFrame {
      */
     public StudentAccount() {
         initComponents();
-        new UIEnhancements().setIcon("tablaIconFull.png", this);
+        new UIEnhancements().setIcon(this);
     }
 
     StudentAccount(Student student) {
