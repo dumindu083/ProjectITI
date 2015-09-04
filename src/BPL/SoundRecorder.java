@@ -85,11 +85,6 @@ public class SoundRecorder {
 
             System.out.println("Recording...");
 
-//            if (wavFile.exists()) {
-//                wavFile.createNewFile();
-//                wavFile.renameTo(wavFile);
-//                
-//            }
             AudioSystem.write(ais, fileType, wavFile);
             
 
@@ -168,6 +163,26 @@ public class SoundRecorder {
         stopper.start();
          
         recorder.start();
+        
+        int N = 32;
+        
+        Complex[] c = new Complex[N];
+        
+        for (int i = 0; i < N; i++) {
+            c[i] = new Complex(i, 0);
+            c[i] = new Complex(-2 * Math.random() + 1, 0);
+        }
+        
+        Complex[] com = FFT.fft(c);
+        FFT.show(c, "FFT of 32");
+//        System.out.println(com.length);
+    }
+    
+    public Complex setComplex(double real, double imaginary){
+        
+        Complex cmp = new Complex(real, imaginary);
+        
+        return cmp;
     }
 
 }

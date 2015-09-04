@@ -374,7 +374,7 @@ public class BasicLesson extends javax.swing.JDialog {
                 try {
                     throw new AssertionError();
                 } catch (Exception e) {
-                    logger.warn("Video choice out of range",e);
+                    logger.warn("Invalid Video Number",e);
                 }
         }
     }//GEN-LAST:event_btnPlayVideoActionPerformed

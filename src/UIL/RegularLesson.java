@@ -379,55 +379,55 @@ public class RegularLesson extends javax.swing.JDialog {
 
         switch (lessonNumber) {
             case 1:
-                uie.openVideo("Basic_1.mp4", this);
+                uie.openVideo("vid/regular/Regular_1.mp4", this);
                 break;
             case 2:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_2.mp4", this);
                 break;
             case 3:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_3.mp4", this);
                 break;
             case 4:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_4.mp4", this);
                 break;
             case 5:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_5.mp4", this);
                 break;
             case 6:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_6.mp4", this);
                 break;
             case 7:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_7.mp4", this);
                 break;
             case 8:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_8.mp4", this);
                 break;
             case 9:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_9.mp4", this);
                 break;
             case 10:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_10.mp4", this);
                 break;
             case 11:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_11.mp4", this);
                 break;
             case 12:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_12.mp4", this);
                 break;
             case 13:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_13.mp4", this);
                 break;
             case 14:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_14.mp4", this);
                 break;
             case 15:
-                uie.showError((JFrame) this.getParent(), "No Video");
+                uie.openVideo("vid/regular/Regular_15.mp4", this);
                 break;
             default:
                 try {
                     throw new AssertionError();
                 } catch (Exception e) {
-                    logger.warn("Video choice out of range",e);
+                    logger.warn("Invalid Video Number",e);
                 }
         }
 

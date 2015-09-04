@@ -36,7 +36,7 @@ public class WriteAudioData {
 //                while (isRecording) {
 //            read = recorder.read(data, 0, bufferSize);
 //            if (read > 0) {
-//                absNormalizedSignal = calculateFFT(data); // --> HERE ^__^
+//                absNormalizedSignal = calculateFFT(data); // call to calculateFFT()
 //            }
 //
 //            if (AudioRecord.ERROR_INVALID_OPERATION != read) {

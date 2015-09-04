@@ -151,6 +151,7 @@ public class UIEnhancements {
             desktop.open(new File(filename));
         } catch (IOException ex) {
             this.showError((JFrame) dialog.getParent(), "Error in openning file");
+            logger.error("Error occured while opernning video file");
         }
     }
     
