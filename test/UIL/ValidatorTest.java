@@ -46,7 +46,7 @@ public class ValidatorTest {
         System.out.println("validateEmail");
         String email = "lsici.lk"; //provide the test String here
         Validator instance = new Validator();
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = instance.validateEmail(email);
         assertEquals(expResult, result);
     }

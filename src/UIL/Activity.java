@@ -74,9 +74,8 @@ public class Activity extends javax.swing.JDialog {
 
         lblActivityTitle.setText(lessonActivity.getActivityTitle());
         lblPassingScore.setText(lessonActivity.getPassingScore());
-        String[] bols = lessonActivity.getBolsToPlay();
 
-        this.bols = bols;
+        this.bols = lessonActivity.getBolsToPlay();
         this.setTitle(this.getTitle() + lesson.getLessonNo());
 
     }
@@ -239,7 +238,6 @@ public class Activity extends javax.swing.JDialog {
         txtUserBol.setEditable(false);
         txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
         txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtUserBol.setText("user bol here");
         txtUserBol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txtStatus.setEditable(false);
@@ -457,48 +455,6 @@ public class Activity extends javax.swing.JDialog {
 
         int currentBolNo = 0;
 
-//        switch (currentBolNo) {
-//            case 0:
-//                txtBolToPlay.setText(this.bols[currentBolNo]);
-//                txtBolNo.setText(String.valueOf(++currentBolNo + " of 10"));
-//                txtUserBol.grabFocus();
-//                btnNextBol.setText("Next");
-//                if(!btnPlay.isEnabled()) btnPlay.setEnabled(true);
-////                txtUserBol.setText("");
-//                break;
-//            case 1:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 2:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 3:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 4:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 5:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 6:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 7:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 8:
-//                repeatBolsPlay(currentBolNo);
-//                break;
-//            case 9:
-//                repeatBolsPlay(currentBolNo);
-//                btnNextBol.setText("Finish");
-//                btnNextBol.setEnabled(false);
-//                break;
-//            default:
-//                throw new AssertionError();
-//        }
-        
         if (currentBolNo == 0) {
             txtBolToPlay.setText(this.bols[currentBolNo]);
 //            txtBolNo.setText(String.valueOf(++currentBolNo + " of 1"));
@@ -508,9 +464,8 @@ public class Activity extends javax.swing.JDialog {
             lblRecFeedback.setText("");
             btnStarttBol.setText("Redo");
         } else {
-            
+            new UIEnhancements().showError(null, "Error in getting the right bol");
         }
-
     }//GEN-LAST:event_btnStarttBolActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
@@ -520,6 +475,7 @@ public class Activity extends javax.swing.JDialog {
 
     private void btnConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfimActionPerformed
         // TODO add your handling code here:
+        txtUserBol.setText("Processing...");
     }//GEN-LAST:event_btnConfimActionPerformed
 
     private void btnRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordActionPerformed

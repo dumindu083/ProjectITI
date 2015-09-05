@@ -71,7 +71,7 @@ public class DBConnectionTest {
     @Test
     public void testGetValues() throws Exception {
         System.out.println("getValues");
-        String query = "";
+        String query = "SELECT * FROM student";
         DBConnection instance = DBConnection.getInstance();
         ResultSet expResult = null;
         ResultSet result = instance.getValues(query);
