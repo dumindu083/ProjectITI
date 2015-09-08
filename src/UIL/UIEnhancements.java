@@ -132,9 +132,28 @@ public class UIEnhancements {
         }
     }
 
+    /**
+     *  Shows an confirmation message on the interface to get the user response on particular operation.
+     *  if the window is null this'll show a standard warning message titled "Confirmation". 
+     *  Returns 0 if the response is "Yes" or else 1 response is "No"
+     * 
+     * 
+     * @param window is the window on which the message is displayed.
+     * @param message is the text to be appeared in the message.
+     */
+    
     public int showConfirm(JFrame window, String message) {
-        return JOptionPane.showConfirmDialog(null, message, window.getTitle(), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        
+        if (window == null) {
+            return JOptionPane.showConfirmDialog(null, message, "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        } else {
+            return JOptionPane.showConfirmDialog(null, message, window.getTitle(), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        }
+        
     }
+    
+    
+    
 
     public JFrame showAdminDialog(JFrame parent) {
 

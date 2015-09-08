@@ -22,7 +22,6 @@ public class Lesson {
     String playingFingers;
     String ImagePath;
     byte[] ImageData;
-    String videoPath;
     
     private Logger logger = Logger.getLogger(Student.class);
 
@@ -74,13 +73,7 @@ public class Lesson {
         this.playingFingers = playingFingers;
     }
 
-    public String getVideoPath() {
-        return videoPath;
-    }
-
-    public void setVideoPath(String videoPath) {
-        this.videoPath = videoPath;
-    }
+   
 
     public byte[] getImageData() {
         return ImageData;

@@ -5,6 +5,10 @@
  */
 package DBL;
 
+import UIL.BasicLessonChooser;
+import UIL.LoginScreen;
+import UIL.LoginScreenAdmin;
+import UIL.WelcomeITI;
 import javax.swing.JFrame;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -45,11 +49,11 @@ public class AdminTest {
     public void testGetUserID() {
         System.out.println("getUserID");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getUserID();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -62,7 +66,7 @@ public class AdminTest {
         Admin instance = new Admin();
         instance.setUserID(UserID);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -72,11 +76,11 @@ public class AdminTest {
     public void testGetFirstName() {
         System.out.println("getFirstName");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getFirstName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -85,11 +89,11 @@ public class AdminTest {
     @Test
     public void testSetFirstName() {
         System.out.println("setFirstName");
-        String FirstName = "";
+        String FirstName = null;
         Admin instance = new Admin();
         instance.setFirstName(FirstName);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -99,11 +103,11 @@ public class AdminTest {
     public void testGetLastName() {
         System.out.println("getLastName");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getLastName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,11 +116,11 @@ public class AdminTest {
     @Test
     public void testSetLastName() {
         System.out.println("setLastName");
-        String LastName = "";
+        String LastName = null;
         Admin instance = new Admin();
         instance.setLastName(LastName);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -126,11 +130,11 @@ public class AdminTest {
     public void testGetGender() {
         System.out.println("getGender");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getGender();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -139,11 +143,11 @@ public class AdminTest {
     @Test
     public void testSetGender() {
         System.out.println("setGender");
-        String Gender = "";
+        String Gender = null;
         Admin instance = new Admin();
         instance.setGender(Gender);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -153,11 +157,11 @@ public class AdminTest {
     public void testGetUsername() {
         System.out.println("getUsername");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getUsername();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -166,11 +170,11 @@ public class AdminTest {
     @Test
     public void testSetUsername() {
         System.out.println("setUsername");
-        String Username = "";
+        String Username = null;
         Admin instance = new Admin();
         instance.setUsername(Username);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -180,11 +184,11 @@ public class AdminTest {
     public void testGetPassword() {
         System.out.println("getPassword");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getPassword();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -193,11 +197,11 @@ public class AdminTest {
     @Test
     public void testSetPassword() {
         System.out.println("setPassword");
-        String Password = "";
+        String Password = null;
         Admin instance = new Admin();
         instance.setPassword(Password);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -207,11 +211,11 @@ public class AdminTest {
     public void testGetEmail() {
         System.out.println("getEmail");
         Admin instance = new Admin();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getEmail();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -220,11 +224,11 @@ public class AdminTest {
     @Test
     public void testSetEmail() {
         System.out.println("setEmail");
-        String Email = "";
+        String Email = null;
         Admin instance = new Admin();
         instance.setEmail(Email);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -233,14 +237,14 @@ public class AdminTest {
     @Test
     public void testLoginITI_Admin_String() {
         System.out.println("loginITI");
-        Admin admin = null;
-        String person = "";
+        Admin admin = new Admin();
+        String person = "admin";
         Admin instance = new Admin();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.loginITI(admin, person);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -249,14 +253,14 @@ public class AdminTest {
     @Test
     public void testLoginITI_Student_String() {
         System.out.println("loginITI");
-        Student student = null;
-        String person = "";
+        Student student = new Student();
+        String person = "student";
         Admin instance = new Admin();
         boolean expResult = false;
         boolean result = instance.loginITI(student, person);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -265,12 +269,12 @@ public class AdminTest {
     @Test
     public void testRegisterITI_Admin_JFrame() {
         System.out.println("registerITI");
-        Admin admin = null;
-        JFrame window = null;
+        Admin admin = new Admin();
+        JFrame window = new LoginScreenAdmin();
         Admin instance = new Admin();
         instance.registerITI(admin, window);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -279,12 +283,12 @@ public class AdminTest {
     @Test
     public void testRegisterITI_Student_JFrame() {
         System.out.println("registerITI");
-        Student student = null;
-        JFrame window = null;
+        Student student = new Student();
+        JFrame window = new LoginScreen();
         Admin instance = new Admin();
         instance.registerITI(student, window);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -293,12 +297,12 @@ public class AdminTest {
     @Test
     public void testUpdateAccount_Admin_JFrame() {
         System.out.println("updateAccount");
-        Admin admin = null;
-        JFrame window = null;
+        Admin admin = new Admin();
+        JFrame window = new LoginScreenAdmin();
         Admin instance = new Admin();
         instance.updateAccount(admin, window);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -307,12 +311,12 @@ public class AdminTest {
     @Test
     public void testUpdateAccount_Student_JFrame() {
         System.out.println("updateAccount");
-        Student student = null;
-        JFrame window = null;
+        Student student = new Student();
+        JFrame window = new LoginScreen();
         Admin instance = new Admin();
         instance.updateAccount(student, window);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -321,13 +325,13 @@ public class AdminTest {
     @Test
     public void testLogoutITI() {
         System.out.println("logoutITI");
-        JFrame currentWindow = null;
-        JFrame underlyingWindow = null;
-        JFrame loginWindow = null;
+        JFrame currentWindow = new BasicLessonChooser();
+        JFrame underlyingWindow = new WelcomeITI();
+        JFrame loginWindow = new LoginScreen();
         Admin instance = new Admin();
         instance.logoutITI(currentWindow, underlyingWindow, loginWindow);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -336,14 +340,14 @@ public class AdminTest {
     @Test
     public void testHasUsername() {
         System.out.println("hasUsername");
-        String Username = "";
-        String tableName = "";
+        String Username = "jayahoo";
+        String tableName = "student";
         Admin instance = new Admin();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.hasUsername(Username, tableName);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
     
 }

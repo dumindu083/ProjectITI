@@ -48,17 +48,6 @@ public class DBConnection {
         return null;
     }
 
-    public boolean isConnected() {
-
-        if (getConnection() != null) {
-            System.out.println("Connected");
-            return true;
-        } else {
-            System.err.println("Not connected");
-            return false;
-        }
-    }
-
     public ResultSet getValues(String query) throws SQLException {
 
         Connection connection = getConnection();

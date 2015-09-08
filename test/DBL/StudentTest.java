@@ -5,6 +5,7 @@
  */
 package DBL;
 
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,11 +45,11 @@ public class StudentTest {
     public void testGetBasicLessonStat() {
         System.out.println("getBasicLessonStat");
         Student instance = new Student();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getBasicLessonStat();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +58,11 @@ public class StudentTest {
     @Test
     public void testSetBasicLessonStat() {
         System.out.println("setBasicLessonStat");
-        String BasicLessonStat = "";
+        String BasicLessonStat = "Done";
         Student instance = new Student();
         instance.setBasicLessonStat(BasicLessonStat);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +72,11 @@ public class StudentTest {
     public void testGetDateRegistred() {
         System.out.println("getDateRegistred");
         Student instance = new Student();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getDateRegistred();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,11 +85,11 @@ public class StudentTest {
     @Test
     public void testSetDateRegistred() {
         System.out.println("setDateRegistred");
-        String DateRegistred = "";
+        String DateRegistred = new Date().toString();
         Student instance = new Student();
         instance.setDateRegistred(DateRegistred);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,11 +99,11 @@ public class StudentTest {
     public void testGetPriorExpereince() {
         System.out.println("getPriorExpereince");
         Student instance = new Student();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getPriorExpereince();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +116,7 @@ public class StudentTest {
         Student instance = new Student();
         instance.setPriorExpereince(PriorExpereince);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -129,7 +130,7 @@ public class StudentTest {
         int result = instance.getNumberOfLessonsCovered();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,7 +143,7 @@ public class StudentTest {
         Student instance = new Student();
         instance.setNumberOfLessonsCovered(NumberOfLessonsCovered);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -156,7 +157,7 @@ public class StudentTest {
         int result = instance.getCurrentLesson();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -169,7 +170,7 @@ public class StudentTest {
         Student instance = new Student();
         instance.setCurrentLesson(CurrentLesson);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -178,13 +179,13 @@ public class StudentTest {
     @Test
     public void testFindStudentByID() {
         System.out.println("findStudentByID");
-        Student student = null;
+        Student student = new Student();
         Student instance = new Student();
         boolean expResult = false;
         boolean result = instance.findStudentByID(student);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -193,11 +194,11 @@ public class StudentTest {
     @Test
     public void testUpdateStudentBasics() {
         System.out.println("updateStudentBasics");
-        Student student = null;
+        Student student = new Student();
         Student instance = new Student();
         instance.updateStudentBasics(student);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -206,11 +207,11 @@ public class StudentTest {
     @Test
     public void testUpdateStudentCurrentLesson() {
         System.out.println("updateStudentCurrentLesson");
-        Student student = null;
+        Student student = new Student();
         Student instance = new Student();
         instance.updateStudentCurrentLesson(student);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
     
 }

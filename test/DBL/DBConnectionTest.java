@@ -5,6 +5,8 @@
  */
 package DBL;
 
+import com.mysql.jdbc.ResultSetImpl;
+import com.sun.rowset.CachedRowSetImpl;
 import java.sql.ResultSet;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,20 +53,7 @@ public class DBConnectionTest {
 //        fail("The test case is a prototype.");
 }
 
-    /**
-     * Test of isConnected method, of class DBConnection.
-     */
-    @Test
-    public void testIsConnected() {
-        System.out.println("isConnected");
-        DBConnection instance = DBConnection.getInstance();
-        boolean expResult = false;
-        boolean result = instance.isConnected();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
+    
     /**
      * Test of getValues method, of class DBConnection.
      */
@@ -86,8 +75,8 @@ public class DBConnectionTest {
     @Test
     public void testInsertValues() throws Exception {
         System.out.println("insertValues");
-        String query = "";
-        DBConnection instance = null;
+        String query = "UPDATE admin SET FirstName = 'Makal' WHERE ADMIN_ID = 1;";
+        DBConnection instance = DBConnection.getInstance();
         instance.insertValues(query);
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

@@ -44,11 +44,11 @@ public class LessonTest {
     public void testGetLessonNo() {
         System.out.println("getLessonNo");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getLessonNo();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,11 +57,11 @@ public class LessonTest {
     @Test
     public void testSetLessonNo() {
         System.out.println("setLessonNo");
-        String lessonNo = "";
+        String lessonNo = "1";
         Lesson instance = new Lesson();
         instance.setLessonNo(lessonNo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +71,11 @@ public class LessonTest {
     public void testGetTitle() {
         System.out.println("getTitle");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getTitle();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +88,7 @@ public class LessonTest {
         Lesson instance = new Lesson();
         instance.setTitle(title);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,11 +98,11 @@ public class LessonTest {
     public void testGetDescription() {
         System.out.println("getDescription");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getDescription();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +115,7 @@ public class LessonTest {
         Lesson instance = new Lesson();
         instance.setDescription(Description);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,11 +125,11 @@ public class LessonTest {
     public void testGetAksharas() {
         System.out.println("getAksharas");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getAksharas();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,7 +142,7 @@ public class LessonTest {
         Lesson instance = new Lesson();
         instance.setAksharas(Aksharas);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -152,11 +152,11 @@ public class LessonTest {
     public void testGetPlayAreas() {
         System.out.println("getPlayAreas");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getPlayAreas();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -169,7 +169,7 @@ public class LessonTest {
         Lesson instance = new Lesson();
         instance.setPlayAreas(PlayAreas);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -179,11 +179,11 @@ public class LessonTest {
     public void testGetPlayingFingers() {
         System.out.println("getPlayingFingers");
         Lesson instance = new Lesson();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getPlayingFingers();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -192,39 +192,13 @@ public class LessonTest {
     @Test
     public void testSetPlayingFingers() {
         System.out.println("setPlayingFingers");
-        String playingFingers = "";
+        String playingFingers = null;
         Lesson instance = new Lesson();
         instance.setPlayingFingers(playingFingers);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getVideoPath method, of class Lesson.
-     */
-    @Test
-    public void testGetVideoPath() {
-        System.out.println("getVideoPath");
-        Lesson instance = new Lesson();
-        String expResult = "";
-        String result = instance.getVideoPath();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setVideoPath method, of class Lesson.
-     */
-    @Test
-    public void testSetVideoPath() {
-        System.out.println("setVideoPath");
-        String videoPath = "";
-        Lesson instance = new Lesson();
-        instance.setVideoPath(videoPath);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getImageData method, of class Lesson.
@@ -237,7 +211,7 @@ public class LessonTest {
         byte[] result = instance.getImageData();
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -250,7 +224,7 @@ public class LessonTest {
         Lesson instance = new Lesson();
         instance.setImageData(ImageData);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -259,12 +233,12 @@ public class LessonTest {
     @Test
     public void testGetLessonData_Lesson_String() {
         System.out.println("getLessonData");
-        Lesson lesson = null;
-        String LessonID = "";
+        Lesson lesson = new Lesson();
+        String LessonID = "1";
         Lesson instance = new Lesson();
         instance.getLessonData(lesson, LessonID);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -273,12 +247,12 @@ public class LessonTest {
     @Test
     public void testGetLessonData_BLesson_String() {
         System.out.println("getLessonData");
-        BLesson bLesson = null;
-        String LessonID = "";
+        BLesson bLesson = new BLesson();
+        String LessonID = "1";
         Lesson instance = new Lesson();
         instance.getLessonData(bLesson, LessonID);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
     
 }

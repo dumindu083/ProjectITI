@@ -151,10 +151,10 @@ public class UIEnhancementsTest {
     @Test
     public void testShowConfirm() {
         System.out.println("showConfirm");
-        JFrame window = null;
-        String message = "";
+        JFrame window = new LoginScreen(); //put null to see a default message
+        String message = "Confirmation Message is here...";
         UIEnhancements instance = new UIEnhancements();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.showConfirm(window, message);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -167,9 +167,9 @@ public class UIEnhancementsTest {
     @Test
     public void testShowAdminDialog() {
         System.out.println("showAdminDialog");
-        JFrame parent = null;
+        JFrame parent = new LoginScreenAdmin();
         UIEnhancements instance = new UIEnhancements();
-        JFrame expResult = new JFrame();
+        JFrame expResult = parent;
         JFrame result = instance.showAdminDialog(parent);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -182,7 +182,7 @@ public class UIEnhancementsTest {
     @Test
     public void testOpenVideo() {
         System.out.println("openVideo");
-        String filename = "";
+        String filename = "vid/regular/Regular_1.MP4";
         JDialog dialog = null;
         UIEnhancements instance = new UIEnhancements();
         instance.openVideo(filename, dialog);
@@ -196,8 +196,8 @@ public class UIEnhancementsTest {
     @Test
     public void testGoBackTwice() {
         System.out.println("goBackTwice");
-        JDialog currentDialog = null;
-        JDialog underlyingDialog = null;
+        JDialog currentDialog = new Activity(new RegularLessonPlan(), true);
+        JDialog underlyingDialog = new RegularLesson(new RegularLessonPlan(), true);
         UIEnhancements instance = new UIEnhancements();
         instance.goBackTwice(currentDialog, underlyingDialog);
         

@@ -37,7 +37,7 @@ public class Activity extends javax.swing.JDialog {
     private String[] bols;
 
     /**
-     * Creates new form About
+     * Creates new form Activity
      */
     public Activity(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -47,8 +47,8 @@ public class Activity extends javax.swing.JDialog {
 
         btnStarttBol.setText("Start");
         btnRecord.setEnabled(false);
-
-    }
+        
+        }
 
     /**
      *
@@ -130,7 +130,7 @@ public class Activity extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnGoBack = new javax.swing.JButton();
-        btnGotoLessonRegPlan = new javax.swing.JButton();
+        btnGotoRegPlan = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -347,11 +347,11 @@ public class Activity extends javax.swing.JDialog {
             }
         });
 
-        btnGotoLessonRegPlan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnGotoLessonRegPlan.setText("Go to Regular Lesson Plan");
-        btnGotoLessonRegPlan.addActionListener(new java.awt.event.ActionListener() {
+        btnGotoRegPlan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnGotoRegPlan.setText("Go to Regular Lesson Plan");
+        btnGotoRegPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGotoLessonRegPlanActionPerformed(evt);
+                btnGotoRegPlanActionPerformed(evt);
             }
         });
 
@@ -364,7 +364,7 @@ public class Activity extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGotoLessonRegPlan))
+                        .addComponent(btnGotoRegPlan))
                     .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -374,7 +374,7 @@ public class Activity extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(btnGoBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGotoLessonRegPlan)
+                .addComponent(btnGotoRegPlan)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -436,7 +436,7 @@ public class Activity extends javax.swing.JDialog {
         }
     }
 
-    private void btnGotoLessonRegPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGotoLessonRegPlanActionPerformed
+    private void btnGotoRegPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGotoRegPlanActionPerformed
         // TODO add your handling code here:
         if (this.student != null) {
             WelcomeITI witi = (WelcomeITI) this.welcomeFrame;
@@ -449,7 +449,7 @@ public class Activity extends javax.swing.JDialog {
             new UIEnhancements().goBackTwice(this, RegualarLesson);
         }
 
-    }//GEN-LAST:event_btnGotoLessonRegPlanActionPerformed
+    }//GEN-LAST:event_btnGotoRegPlanActionPerformed
 
     private void btnStarttBolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStarttBolActionPerformed
 
@@ -457,9 +457,7 @@ public class Activity extends javax.swing.JDialog {
 
         if (currentBolNo == 0) {
             txtBolToPlay.setText(this.bols[currentBolNo]);
-//            txtBolNo.setText(String.valueOf(++currentBolNo + " of 1"));
             txtUserBol.grabFocus();
-//            btnStarttBol.setText("Next");
             if(!btnRecord.isEnabled()) btnRecord.setEnabled(true);
             lblRecFeedback.setText("");
             btnStarttBol.setText("Redo");
@@ -565,7 +563,7 @@ public class Activity extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfim;
     private javax.swing.JButton btnGoBack;
-    private javax.swing.JButton btnGotoLessonRegPlan;
+    private javax.swing.JButton btnGotoRegPlan;
     private javax.swing.JButton btnListen;
     private javax.swing.JButton btnRecord;
     private javax.swing.JButton btnStarttBol;

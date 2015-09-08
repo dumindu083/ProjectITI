@@ -44,11 +44,11 @@ public class LessonActivityTest {
     public void testGetActivityID() {
         System.out.println("getActivityID");
         LessonActivity instance = new LessonActivity();
-        String expResult = "2";
+        String expResult = null;
         String result = instance.getActivityID();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -61,7 +61,7 @@ public class LessonActivityTest {
         LessonActivity instance = new LessonActivity();
         instance.setActivityID(activityID);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,11 +71,11 @@ public class LessonActivityTest {
     public void testGetActivityTitle() {
         System.out.println("getActivityTitle");
         LessonActivity instance = new LessonActivity();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getActivityTitle();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +88,7 @@ public class LessonActivityTest {
         LessonActivity instance = new LessonActivity();
         instance.setActivityTitle(activityTitle);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -98,11 +98,11 @@ public class LessonActivityTest {
     public void testGetPassingScore() {
         System.out.println("getPassingScore");
         LessonActivity instance = new LessonActivity();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getPassingScore();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +115,7 @@ public class LessonActivityTest {
         LessonActivity instance = new LessonActivity();
         instance.setPassingScore(PassingScore);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,11 +125,11 @@ public class LessonActivityTest {
     public void testGetBolsToPlay() {
         System.out.println("getBolsToPlay");
         LessonActivity instance = new LessonActivity();
-        String[] expResult = null;
+        String[] expResult = new String[10];
         String[] result = instance.getBolsToPlay();
         assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,7 +142,7 @@ public class LessonActivityTest {
         LessonActivity instance = new LessonActivity();
         instance.setBolsToPlay(BolsToPlay);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -151,7 +151,7 @@ public class LessonActivityTest {
     @Test
     public void testGetActivityData() {
         System.out.println("getActivityData");
-        LessonActivity lessonActivity = null;
+        LessonActivity lessonActivity = new LessonActivity();
         String ActivityID = "2";
         LessonActivity instance = new LessonActivity();
         instance.setActivityID(ActivityID);
