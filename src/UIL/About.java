@@ -80,7 +80,7 @@ public class About extends javax.swing.JDialog {
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Version : 1.0 ");
+        jLabel4.setText("Version : 1.4");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
