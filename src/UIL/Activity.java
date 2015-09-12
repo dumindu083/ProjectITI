@@ -46,7 +46,7 @@ public class Activity extends javax.swing.JDialog {
         new UIEnhancements().setIcon((JFrame) this.getParent());
 
         btnStarttBol.setText("Start");
-        btnRecord.setEnabled(false);
+        btnRecord.setEnabled(true);
         
         }
 

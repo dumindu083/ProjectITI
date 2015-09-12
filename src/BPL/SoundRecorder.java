@@ -78,7 +78,7 @@ public class SoundRecorder {
             line = (TargetDataLine) AudioSystem.getLine(info); //where the exception jumps up
             line.open(format);
             line.start(); //start capturing
-//            System.out.println(line.getBufferSize());
+            System.out.println(line.getBufferSize());
             System.out.println("Start Capturing...");
 
             AudioInputStream ais = new AudioInputStream(line);
@@ -132,9 +132,6 @@ public class SoundRecorder {
             
             }
         
-        
-       
-            
         }
     }
 

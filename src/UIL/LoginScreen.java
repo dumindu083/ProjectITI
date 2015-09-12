@@ -22,6 +22,7 @@ public class LoginScreen extends javax.swing.JFrame {
     public LoginScreen() {
         initComponents();
         new UIEnhancements().setIcon(this);
+        btnLogin.setVisible(true);
 
     }
 
@@ -40,6 +41,7 @@ public class LoginScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLogin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,8 +50,8 @@ public class LoginScreen extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnLogin1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnCreateAcc = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -59,6 +61,14 @@ public class LoginScreen extends javax.swing.JFrame {
         itemExit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+
+        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLogin.setText("Log In");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Intelligent Tabla Instructor");
@@ -87,19 +97,19 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Password");
 
-        btnLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnLogin.setText("Log In");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
-            }
-        });
-
         btnClear.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
+            }
+        });
+
+        btnLogin1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnLogin1.setText("Log In");
+        btnLogin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogin1ActionPerformed(evt);
             }
         });
 
@@ -111,7 +121,7 @@ public class LoginScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -136,9 +146,9 @@ public class LoginScreen extends javax.swing.JFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
-                    .addComponent(btnLogin))
+                    .addComponent(btnLogin1))
                 .addContainerGap())
         );
 
@@ -262,12 +272,6 @@ public class LoginScreen extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_itemExitActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
-        clearValues();
-
-    }//GEN-LAST:event_btnClearActionPerformed
-
     private void btnCreateAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccActionPerformed
         // TODO add your handling code here:
         new UIEnhancements().showWindow(this, new RegistrationForm());
@@ -345,6 +349,38 @@ public class LoginScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        clearValues();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
+        // TODO add your handling code here:
+        UIEnhancements uie = new UIEnhancements();
+        Validator validator = new Validator();
+        Student student = new Student();
+        
+        if (validator.isEmpty(txtUsername.getText())) {
+            uie.showWarning(this, "Please enter your username");
+            txtUsername.grabFocus();
+
+        } else if (validator.isEmpty(String.valueOf(txtPassword.getPassword()))) {
+            uie.showWarning(this, "Please enter your password");
+            txtPassword.grabFocus();
+        } else {
+
+            student.setUsername(txtUsername.getText());
+            student.setPassword(String.valueOf(txtPassword.getPassword()));
+            if (student.loginITI(student, "student")) {
+                uie.showWindow(this, new WelcomeITI(student));
+                clearValues();
+            } else {
+                uie.showError(this, "Invalid login! Please re-check your credentials");
+                clearValues();
+            }
+        }
+    }//GEN-LAST:event_btnLogin1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -376,6 +412,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCreateAcc;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
     private javax.swing.JMenuItem itemAdminLogin;
     private javax.swing.JMenuItem itemExit;
     private javax.swing.JLabel jLabel2;
