@@ -45,11 +45,11 @@ public class SoundRecorder {
     TargetDataLine line;
 
     /**
-     * Defines an audio format
+     * Defines the audio format
      */
     AudioFormat getAudioFormat() {
         
-        float sampleRate = 44100; //keep this limited to 44100Hz as per the need
+        float sampleRate = 44100; 
         int sampleSizeInBits = 8;
         int channels = 1;
         boolean signed = true;
@@ -78,7 +78,6 @@ public class SoundRecorder {
             line = (TargetDataLine) AudioSystem.getLine(info); //where the exception jumps up
             line.open(format);
             line.start(); //start capturing
-            System.out.println(line.getBufferSize());
             System.out.println("Start Capturing...");
 
             AudioInputStream ais = new AudioInputStream(line);
@@ -127,59 +126,10 @@ public class SoundRecorder {
         if (null != os) {
             
             while(line.isRunning()){
-            
-                
-            
             }
         
         }
     }
 
-    /**
-     * Entry to run the program
-     */
-    public static void main(String[] args) {
-
-        final SoundRecorder recorder = new SoundRecorder();
-
-        // creates a new thread that waits for a specified
-        // of time before stopping
-        Thread stopper = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(RECORD_TIME);
-                } catch (InterruptedException ex) {
-                    logger.error("InterruptedException in Recording thread", ex);
-                }
-                recorder.finish();
-            }
-        });
-
-        stopper.start();
-         
-        recorder.start();
-        
-        int N = 32;
-        
-        Complex[] c = new Complex[N];
-        
-        for (int i = 0; i < N; i++) {
-            c[i] = new Complex(i, 0);
-            c[i] = new Complex(-2 * Math.random() + 1, 0);
-        }
-        
-        Complex[] com = FFT.fft(c);
-        FFT.show(c, "FFT of 32");
-//        System.out.println(com.length);
-    }
-    
-    public Complex setComplex(double real, double imaginary){
-        
-        Complex cmp = new Complex(real, imaginary);
-        
-        return cmp;
-    }
 
 }

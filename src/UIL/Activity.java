@@ -46,9 +46,9 @@ public class Activity extends javax.swing.JDialog {
         new UIEnhancements().setIcon((JFrame) this.getParent());
 
         btnStarttBol.setText("Start");
-        btnRecord.setEnabled(true);
-        
-        }
+        btnRecord.setEnabled(false);
+
+    }
 
     /**
      *
@@ -121,7 +121,7 @@ public class Activity extends javax.swing.JDialog {
         btnStarttBol = new javax.swing.JButton();
         btnConfim = new javax.swing.JButton();
         txtBolToPlay = new javax.swing.JTextField();
-        txtUserBol = new javax.swing.JTextField();
+        txtProcessStat = new javax.swing.JTextField();
         txtStatus = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnRecord = new javax.swing.JButton();
@@ -235,14 +235,19 @@ public class Activity extends javax.swing.JDialog {
         txtBolToPlay.setBackground(new java.awt.Color(255, 255, 255));
         txtBolToPlay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        txtUserBol.setEditable(false);
-        txtUserBol.setBackground(new java.awt.Color(255, 255, 255));
-        txtUserBol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtUserBol.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtProcessStat.setEditable(false);
+        txtProcessStat.setBackground(new java.awt.Color(255, 255, 255));
+        txtProcessStat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtProcessStat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txtStatus.setEditable(false);
         txtStatus.setBackground(new java.awt.Color(255, 255, 255));
         txtStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStatusActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Done");
 
@@ -306,7 +311,7 @@ public class Activity extends javax.swing.JDialog {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(txtProcessStat, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,9 +322,9 @@ public class Activity extends javax.swing.JDialog {
                     .addComponent(btnRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRecFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBolToPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnListen, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,11 +332,11 @@ public class Activity extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtUserBol, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProcessStat, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -421,8 +426,8 @@ public class Activity extends javax.swing.JDialog {
         if (!btnRecord.isEnabled()) {
             btnRecord.setEnabled(true);
         }
-        if (!txtUserBol.getText().isEmpty()) {
-            txtUserBol.setText("");
+        if (!txtProcessStat.getText().isEmpty()) {
+            txtProcessStat.setText("");
         }
     }
 
@@ -431,8 +436,8 @@ public class Activity extends javax.swing.JDialog {
         if (!btnRecord.isEnabled()) {
             btnRecord.setEnabled(true);
         }
-        if (!txtUserBol.getText().isEmpty()) {
-            txtUserBol.setText("");
+        if (!txtProcessStat.getText().isEmpty()) {
+            txtProcessStat.setText("");
         }
     }
 
@@ -457,8 +462,12 @@ public class Activity extends javax.swing.JDialog {
 
         if (currentBolNo == 0) {
             txtBolToPlay.setText(this.bols[currentBolNo]);
-            txtUserBol.grabFocus();
-            if(!btnRecord.isEnabled()) btnRecord.setEnabled(true);
+            txtProcessStat.grabFocus();
+            if (!btnRecord.isEnabled()) {
+                btnRecord.setEnabled(true);
+                btnConfim.setEnabled(false);
+                txtProcessStat.setText("");
+            }
             lblRecFeedback.setText("");
             btnStarttBol.setText("Redo");
         } else {
@@ -473,14 +482,14 @@ public class Activity extends javax.swing.JDialog {
 
     private void btnConfimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfimActionPerformed
         // TODO add your handling code here:
-        txtUserBol.setText("Processing...");
+        txtProcessStat.setText("Processing...");
     }//GEN-LAST:event_btnConfimActionPerformed
 
     private void btnRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordActionPerformed
         // TODO add your handling code here:
 
         btnRecord.setEnabled(false);
-        txtUserBol.setForeground(Color.LIGHT_GRAY);
+        txtProcessStat.setForeground(Color.LIGHT_GRAY);
 
         lblRecFeedback.setText("Recorded");
 
@@ -497,9 +506,9 @@ public class Activity extends javax.swing.JDialog {
                     Logger.getLogger(Activity.class.getName()).log(Level.ERROR, null, ex);
                 }
                 soundRecorder.finish(btnListen, btnConfim);
-
             }
         });
+        
         stopper.start();
 
         soundRecorder.start();
@@ -509,9 +518,13 @@ public class Activity extends javax.swing.JDialog {
     private void btnListenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListenActionPerformed
         // TODO add your handling code here:
         MusicPlayer musicPlayer = new MusicPlayer();
-        
+
         musicPlayer.playRecord();
     }//GEN-LAST:event_btnListenActionPerformed
+
+    private void txtStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -585,7 +598,7 @@ public class Activity extends javax.swing.JDialog {
     private javax.swing.JLabel lblPassingScore;
     private javax.swing.JLabel lblRecFeedback;
     private javax.swing.JTextField txtBolToPlay;
+    private javax.swing.JTextField txtProcessStat;
     private javax.swing.JTextField txtStatus;
-    private javax.swing.JTextField txtUserBol;
     // End of variables declaration//GEN-END:variables
 }

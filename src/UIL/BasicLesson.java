@@ -39,13 +39,6 @@ public class BasicLesson extends javax.swing.JDialog {
         initComponents();
 
         new UIEnhancements().setIcon((JFrame) this.getParent());
-//        jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMinimum());
-//        txtDescription.setCaretPosition();
-//        jScrollPane1.repaint();
-//        jScrollPane1.getViewport().setViewPosition(new Point(0, 0));
-//        System.out.println(txtDescription.getCaretPosition());
-//        jScrollPane1.set
-//        jScrollPane1.setViewportView(txtDescription);
 
     }
 
@@ -326,7 +319,7 @@ public class BasicLesson extends javax.swing.JDialog {
 
         switch (lessonNumber) {
             case 1:
-                uie.openVideo("Basic_1.mp4", this);
+                uie.showError((JFrame) this.getParent(), "No Video");
                 break;
             case 2:
                 uie.showError((JFrame) this.getParent(), "No Video");

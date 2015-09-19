@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import org.apache.log4j.Logger;
+
 /**
  *
  * @author hp
@@ -24,8 +25,8 @@ public class Admin {
     String Email;
     String Username;
     String Password;
-    
-    private Logger logger = Logger.getLogger(Admin.class);
+
+    final private Logger logger = Logger.getLogger(Admin.class);
 
     public String getUserID() {
         return UserID;
@@ -108,12 +109,10 @@ public class Admin {
                 return false;
             }
         } catch (SQLException ex) {
-//            ex.printStackTrace();
-            logger.error("SQL - Error in Login Proccess", ex);
+            logger.error("SQL - Error in Login Proccess", ex); //appends this exception on log for error
             new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
             return false;
         }
-
     }
 
     public boolean loginITI(Student student, String person) {
@@ -147,7 +146,7 @@ public class Admin {
                 return false;
             }
         } catch (SQLException ex) {
-            logger.error("SQL - Error in Login Proccess", ex);
+            logger.error("SQL - Error in Login Proccess", ex); //appends this exception on log for error
             new UIL.UIEnhancements().showError(null, "Something went wrong in DB operations");
             return false;
         }
@@ -169,11 +168,10 @@ public class Admin {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "You've registered as an admin for ITI!");
         } catch (SQLException e) {
-//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace(); // Set up proper msg to the user...
             if (e.getMessage().contains("Duplicate entry")) {
                 new UIL.UIEnhancements().showWarning(window, "Please, try out a different username");
             } else {
+                logger.error("Exception while writing data to the Database", e); //appends this exception on log for error
                 new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
             }
         }
@@ -199,18 +197,15 @@ public class Admin {
 
         try {
             dBConnection.insertValues(SQL);
-            new UIL.UIEnhancements().showFeedback(window, "Account created successfully...\nThank you for registering with ITI!s");
+            new UIL.UIEnhancements().showFeedback(window, "Account created successfully...\nThank you for registering with ITI!");
         } catch (SQLException e) {
-//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace();
             if (e.getMessage().contains("Duplicate entry")) {
                 new UIL.UIEnhancements().showWarning(window, "Please, try out a different username");
             } else {
+                logger.error("Exception while writing data to the Database", e);
                 new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
             }
-            
         }
-
     }
 
     public void updateAccount(Admin admin, JFrame window) {
@@ -229,8 +224,7 @@ public class Admin {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "Account updated successfully!");
         } catch (SQLException ex) {
-//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace();
+            logger.error("Exception while writing data to the Database", ex); //appends this exception on log for error
             new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
         }
     }
@@ -251,34 +245,31 @@ public class Admin {
             dBConnection.insertValues(SQL);
             new UIL.UIEnhancements().showFeedback(window, "Account updated successfully!");
         } catch (SQLException ex) {
-//            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-//            ex.printStackTrace();
+            logger.error("Exception while writing data to the Database", ex); //appends this exception on log for error
             new UIL.UIEnhancements().showError(window, "Something went wrong in writing to the DB");
         }
     }
-    
-    public void logoutITI(JFrame currentWindow, JFrame underlyingWindow, JFrame loginWindow){
-        
+
+    public void logoutITI(JFrame currentWindow, JFrame underlyingWindow, JFrame loginWindow) {
+
         new UIEnhancements().showWindow(currentWindow, loginWindow);
         underlyingWindow.dispose();
-        
     }
-    
-     public boolean hasUsername(String Username, String tableName){
-        
+
+    public boolean hasUsername(String Username, String tableName) {
+
         try {
             DBConnection dBConnection = DBConnection.getInstance();
-            
+
             String SQL = "SELECT * FROM " + tableName + " WHERE Username = '" + Username + "';";
 
             ResultSet resultSet = dBConnection.getValues(SQL);
-            
+
             return resultSet.first();
         } catch (SQLException ex) {
+            logger.error("Exception while searching entries in Database", ex); //appends this exception on log for error
             new UIEnhancements().showError(null, "Error in Database operations");
             return false;
         }
-        
     }
-    
 }

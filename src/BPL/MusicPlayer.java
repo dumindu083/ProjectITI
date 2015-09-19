@@ -29,7 +29,7 @@ public class MusicPlayer {
     public void playRecord() {
 
         try {
-            File filename = new File("recos/RecordedAudio.wav");
+            File filename = new File("recos/RecordedAudio.wav"); //Creates or Updates the temporary recording file
             
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(filename.getAbsoluteFile());
             Clip clip = AudioSystem.getClip();

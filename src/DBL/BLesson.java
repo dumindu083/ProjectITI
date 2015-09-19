@@ -9,7 +9,7 @@ package DBL;
  * Manages DB operations related to Basic Lessons of the ITI
  * @author hp
  */
-public class BLesson extends Lesson { //this implies thw word Basic Lesson, it is named as BLesson in order to get rid of the 
+public class BLesson extends Lesson { //this implies the word Basic Lesson, it is named as BLesson in order to get rid of the 
                                        //ambiguity of class names
     
     String point_1;            // important points of the description for the user
